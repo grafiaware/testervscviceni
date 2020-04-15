@@ -1,0 +1,13 @@
+Options -Indexes
+Require all granted
+
+Options +FollowSymLinks
+
+RewriteEngine On
+
+RewriteRule ^public - [L]
+# RewriteCond %{REQUEST_URI} !^/index\.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+# RewriteRule ^((?s).*)$ index.php?_uri=/$1 [QSA,L]

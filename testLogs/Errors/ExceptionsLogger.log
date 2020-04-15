@@ -1,0 +1,42 @@
+[info] [2019-11-19 13:09:45] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Error [2019-11-19 13:09:45] Call to undefined method Model\Dao\KonfiguraceTestuDao::nameExtract() on line 264 in file D:\ApacheRoot\TesterVScviceni\Model\Dao\DaoAbstract.php
+[info] [2019-11-19 15:29:19] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Error [2019-11-19 15:29:19] Call to undefined method Model\Dao\KonfiguraceTestuDao::nameExtract() on line 264 in file D:\ApacheRoot\TesterVScviceni\Model\Dao\DaoAbstract.php
+[info] [2019-11-19 15:33:49] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Model\Dao\DbDaoException exception [2019-11-19 15:33:49] (execInsertWithUid) - Selhala transakce insert. on line 143 in file D:\ApacheRoot\TesterVScviceni\Model\Dao\DaoAbstract.php
+[info] [2019-11-19 15:37:49] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Error [2019-11-19 15:37:49] Cannot access parent:: when current class scope has no parent on line 21 in file D:\ApacheRoot\TesterVScviceni\vendor\pes\pes\src\Database\Statement\Exception\StatementException.php
+[info] [2019-11-19 15:47:11] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Error [2019-11-19 15:47:11] Cannot access parent:: when current class scope has no parent on line 21 in file D:\ApacheRoot\TesterVScviceni\vendor\pes\pes\src\Database\Statement\Exception\StatementException.php
+[info] [2019-11-19 15:49:23] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Pes\Database\Statement\Exception\ExecuteException exception [2019-11-19 15:49:23]  Metoda Pes\Database\Statement\Statement::execute selhala.
+    #0 D:\ApacheRoot\TesterVScviceni\vendor\pes\pes\src\Database\Statement\Statement.php(155): PDOStatement->execute(NULL)
+    #1 D:\ApacheRoot\TesterVScviceni\Model\Dao\DaoAbstract.php(139): Pes\Database\Statement\Statement->execute()
+    #2 D:\ApacheRoot\TesterVScviceni\Model\Dao\KonfiguraceTestuDao.php(74): Model\Dao\DaoAbstract->execInsertWithUid('INSERT INTO kon...', Object(Model\RowObject\KonfiguraceTestuRow), 'uid_konfigurace...')
+    #3 D:\ApacheRoot\TesterVScviceni\test\indexTestDaoSV.php(57): Model\Dao\KonfiguraceTestuDao->save(Object(Model\RowObject\KonfiguraceTestuRow))
+    #4 {main} on line 163 in file D:\ApacheRoot\TesterVScviceni\vendor\pes\pes\src\Database\Statement\Statement.php
+[info] [2019-11-19 15:49:59] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] TypeError [2019-11-19 15:49:59] Argument 3 passed to Tester\Model\Db\RowObject\Hydrator\HydratorRowObject::extract() must implement interface Pes\Database\Metadata\TableMetadataInterface, null given, called in D:\ApacheRoot\TesterVScviceni\Tester\Model\Db\Dao\DaoAbstract.php on line 292 on line 22 in file D:\ApacheRoot\TesterVScviceni\Tester\Model\Db\RowObject\Hydrator\HydratorRowObject.php
+[info] [2019-11-19 15:51:43] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] TypeError [2019-11-19 15:51:43] Argument 3 passed to Tester\Model\Db\RowObject\Hydrator\HydratorRowObject::extract() must implement interface Pes\Database\Metadata\TableMetadataInterface, null given, called in D:\ApacheRoot\TesterVScviceni\Tester\Model\Db\Dao\DaoAbstract.php on line 292 on line 22 in file D:\ApacheRoot\TesterVScviceni\Tester\Model\Db\RowObject\Hydrator\HydratorRowObject.php
+[info] [2019-11-19 15:52:42] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Pes\Database\Statement\Exception\ExecuteException exception [2019-11-19 15:52:42]  Metoda Pes\Database\Statement\Statement::execute selhala.
+    #0 D:\ApacheRoot\TesterVScviceni\vendor\pes\pes\src\Database\Statement\Statement.php(155): PDOStatement->execute(NULL)
+    #1 D:\ApacheRoot\TesterVScviceni\Model\Dao\DaoAbstract.php(139): Pes\Database\Statement\Statement->execute()
+    #2 D:\ApacheRoot\TesterVScviceni\Model\Dao\KonfiguraceTestuDao.php(74): Model\Dao\DaoAbstract->execInsertWithUid('INSERT INTO kon...', Object(Model\RowObject\KonfiguraceTestuRow), 'uid_konfigurace...')
+    #3 D:\ApacheRoot\TesterVScviceni\test\indexTestDaoSV.php(57): Model\Dao\KonfiguraceTestuDao->save(Object(Model\RowObject\KonfiguraceTestuRow))
+    #4 {main} on line 163 in file D:\ApacheRoot\TesterVScviceni\vendor\pes\pes\src\Database\Statement\Statement.php
+[info] [2019-11-19 15:56:08] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Pes\Database\Statement\Exception\ExecuteException exception [2019-11-19 15:56:08]  Metoda Pes\Database\Statement\Statement::execute selhala. on line 163 in file D:\ApacheRoot\TesterVScviceni\vendor\pes\pes\src\Database\Statement\Statement.php
+[info] [2019-11-19 16:08:20] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Pes\Database\Statement\Exception\ExecuteException exception [2019-11-19 16:08:20]  Metoda Pes\Database\Statement\Statement::execute selhala. on line 163 in file D:\ApacheRoot\TesterVScviceni\vendor\pes\pes\src\Database\Statement\Statement.php
+[info] [2019-11-19 16:15:06] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Error [2019-11-19 16:15:06] Call to undefined method Pes\Database\Statement\Statement::exec() on line 139 in file D:\ApacheRoot\TesterVScviceni\Model\Dao\DaoAbstract.php
+[info] [2019-11-19 16:15:47] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Pes\Database\Statement\Exception\ExecuteException exception [2019-11-19 16:15:47]  Metoda Pes\Database\Statement\Statement::execute selhala. on line 163 in file D:\ApacheRoot\TesterVScviceni\vendor\pes\pes\src\Database\Statement\Statement.php
+[info] [2019-11-19 16:17:07] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Pes\Database\Statement\Exception\ExecuteException exception [2019-11-19 16:17:07]  Metoda Pes\Database\Statement\Statement::execute selhala. on line 163 in file D:\ApacheRoot\TesterVScviceni\vendor\pes\pes\src\Database\Statement\Statement.php
+[info] [2019-11-19 16:24:25] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Pes\Database\Statement\Exception\ExecuteException exception [2019-11-19 16:24:25]  Metoda Pes\Database\Statement\Statement::execute selhala. on line 163 in file D:\ApacheRoot\TesterVScviceni\vendor\pes\pes\src\Database\Statement\Statement.php
+[info] [2019-11-19 16:24:31] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ExceptionsLogger.log.
+[critical] Pes\Database\Statement\Exception\ExecuteException exception [2019-11-19 16:24:31]  Metoda Pes\Database\Statement\Statement::execute selhala. on line 163 in file D:\ApacheRoot\TesterVScviceni\vendor\pes\pes\src\Database\Statement\Statement.php

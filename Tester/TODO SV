@@ -1,0 +1,3 @@
+- Tester\Model\Aggregate\Repository\OdpovedAggregate - vyhodit ->create do factory OdpovedAggregaEntityFactory (nebo všechny factory přejmenova nez 'Entity'-
+    - jsou ve složce entity\Factory)
+- přesunout Aggregate\EntityFactory do podsložky Entity se jménem Factory

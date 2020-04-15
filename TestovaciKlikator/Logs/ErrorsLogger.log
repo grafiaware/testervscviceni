@@ -1,0 +1,1 @@
+[debug] PHP error or unknown user error type: [E_NOTICE] [2017-11-10 15:44:51] A session had already been started - ignoring session_start() on line 10 in file D:\ApacheRoot\TesterVScviceni\TestovaciKlikator\Actions\SmazSession.php

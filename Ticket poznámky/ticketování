@@ -1,0 +1,23 @@
+CLAIM											
+	claimer
+        password_hash
+        ticket_type
+	ticket_target									
+											
+TICKET											
+	claimer
+        claimer_client_id
+	ticket_id_hash
+	type	
+        target	
+        ticket_expiration_time
+	forwardable	
+        forwarded	
+        forwarded_to										
+											
+TYPE										
+single											
+multiple    multiplicator; counter									
+term        permission_expiration_time										
+durable							
+

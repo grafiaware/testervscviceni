@@ -1,0 +1,8 @@
+[info] [2019-11-11 16:37:17]Start logger: Logs/Bootstrap/Bootstrap.log.
+[info] include "BootstrapSetDefault.php"
+[info] include D:\ApacheRoot\TesterVScviceni\Tester/AutoloaderSet.php
+[info] Nastavení GlobalsSet - force_development: , force_production: , development: development mode by environment, production: 
+[warning] Je vypnutý 'session.use_strict_mode'!
+[warning] Garbage collection se spouští jen jednou za 1000 spuštění skriptu! Např. session tak může být uklizena za dlouhou dobu.
+[info] Date default timezone set: date_default_timezone_set("Europe/Prague");
+[info] Set locale: setlocale(LC_ALL, '');

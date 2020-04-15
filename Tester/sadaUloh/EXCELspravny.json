@@ -1,0 +1,511 @@
+{
+    "1": {
+        "navigace": {
+            "napis": "1"
+        },
+        "otazka": {
+            "legend": "Úloha 1",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "",
+                    "label": "Odpovězte na otázku:",
+                    "text": "Jaký operátor použijete pro dělení?!"
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "%",
+                            "2": ":",
+                            "3": "div",
+                            "4": "\/"
+                        },
+                        "ok": "4"
+                    }
+                }
+            }
+        }
+    },
+    "2": {
+        "navigace": {
+            "napis": "2"
+        },
+        "otazka": {
+            "legend": "Úloha 2",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "uloha02.jpg",
+                    "label": "Odpovězte na otázku:",
+                    "text": "Jaký vzorec bude v buňce C6 pro výpočet průměrné denní navštěvnosti za leden?"
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "=11051\/31",
+                            "2": "=C5\/31",
+                            "3": "=C5:3",
+                            "4": "=11051:31"
+                        },
+                        "ok": "2"
+                    }
+                }
+            }
+        }
+    },
+    "3": {
+        "navigace": {
+            "napis": "3"
+        },
+        "otazka": {
+            "legend": "Úloha 3",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "uloha03.gif",
+                    "label": "Odpovězte na otázku:",
+                    "text": "Jaký vzorec vložíte do buňky C2, aby obsahoval druhou mocninu buňky B2? "
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "=A2*B2",
+                            "2": "=A2*A2",
+                            "3": "=B2^2",
+                            "4": "=B2\/B2"
+                        },
+                        "ok": "3"
+                    }
+                }
+            }
+        }
+    },
+    "4": {
+        "navigace": {
+            "napis": "4"
+        },
+        "otazka": {
+            "legend": "Úloha 4",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "uloha04.gif",
+                    "label": "Odpovězte na otázku:",
+                    "text": "Jaký vzorec byste napsali do buňky D2?"
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "=B2+B2*C2",
+                            "2": "=B2*C2",
+                            "3": "B2*C2+B2",
+                            "4": "=B2+C2"
+                        },
+                        "ok": "1"
+                    }
+                }
+            }
+        }
+    },
+    "5": {
+        "navigace": {
+            "napis": "5"
+        },
+        "otazka": {
+            "legend": "Úloha 5",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "uloha05.gif",
+                    "label": "Odpovězte na otázku:",
+                    "text": "Jaký vzorec musíte napsat do buňky C12, abyste jej mohli zkopírovat do celé tabulky? "
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "=C$11$\/D2",
+                            "2": "=C$11\/$D2",
+                            "3": "=C11$\/$D2",
+                            "4": "=C$11\/D$2"
+                        },
+                        "ok": "2"
+                    }
+                }
+            }
+        }
+    },
+    "6": {
+        "navigace": {
+            "napis": "6"
+        },
+        "otazka": {
+            "legend": "Úloha 6",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "uloha06.gif",
+                    "label": "Odpovězte na otázku:",
+                    "text": "Která z následujících funkcí sečte hodnoty A až D ve všech řádcích a všech sloupcích?"
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "=SUMA(A2:D2)",
+                            "2": "=SUMA(A2:D4)",
+                            "3": "SUMA(A2:D4)",
+                            "4": "=(A2:D4)"
+                        },
+                        "ok": "3"
+                    }
+                }
+            }
+        }
+    },
+    "7": {
+        "navigace": {
+            "napis": "7"
+        },
+        "otazka": {
+            "legend": "Úloha 7",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "uloha07.jpg",
+                    "label": "Zadání:",
+                    "text": "Tabulku na obrázku chceme kopírovat. <br\/>Tato tabulka je barevně upravená, má nastaveno ohraničení, obsahuje i vzorce. <br\/>Platí, že při běžném kopírování (pomocí příkazů Kopírovat\/Vložit) ...(doplňte)"
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "se překopírují jenom texty , nikoli vzorce, barvy a ohraničení",
+                            "2": "se překopírují jenom texty a vzorce, nikoli barvy a ohraničení",
+                            "3": "se překopíruje vše, co tabulka obsahuje, včetně vzorců, barev, ohraničení"
+                        },
+                        "ok": "3"
+                    }
+                }
+            }
+        }
+    },
+    "8": {
+        "navigace": {
+            "napis": "8"
+        },
+        "otazka": {
+            "legend": "Úloha 8",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "uloha08.jpg",
+                    "label": "Zadání:",
+                    "text": "Potřebujeme okopírovat pouze vzhled tabulky, nikoli vyplněné údaje ani vzorce."
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "To v Excelu nejde, tabulka se okopíruje vždy celá<br\/>",
+                            "2": "Jediná možnost je, okopírovat tabulku celou, se vším všudy <br\/>a z kopie potom údaje a vzorce smazat pomocí klávesy DELETE<br\/>",
+                            "3": "Pro vložení kopie tabulky použijeme příkaz Vložit jinak, přičemž označíme volbu Formáty<br\/>",
+                            "4": "Označíme kopii tabulky a zadáme příkaz Vyprázdnit tabulku<br\/>"
+                        },
+                        "ok": "3"
+                    }
+                }
+            }
+        }
+    },
+    "9": {
+        "navigace": {
+            "napis": "9"
+        },
+        "otazka": {
+            "legend": "Úloha 9",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "",
+                    "label": "Zadání:",
+                    "text": "V tabulce jsme nastavili základní ohraničení, ale některé čáry bychom potřebovali zvýraznit."
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "Můžeme je zvýraznit jenom silnější nebo dvojitou čarou",
+                            "2": "Můžeme je zvýraznit pouze změnou barvy, se sílou čáry nelze nic dělat",
+                            "3": "Můžeme je zvýraznit dvojitou čarou, silnou čarou a současně i barvou"
+                        },
+                        "ok": "3"
+                    }
+                }
+            }
+        }
+    },
+    "10": {
+        "navigace": {
+            "napis": "10"
+        },
+        "otazka": {
+            "legend": "Úloha 10",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "",
+                    "label": "Zadání:",
+                    "text": "Vzorec může odkazovat ...(doplňte)"
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "pouze na buňku (buňky) umístěné na stejném listě",
+                            "2": "pouze na buňku (buňky) umístěné ve stejném sešitě",
+                            "3": "na buňku (buňky), které mohou být umístěny ve stejném nebo i v jiném sešitě"
+                        },
+                        "ok": "3"
+                    }
+                }
+            }
+        }
+    },
+    "11": {
+        "navigace": {
+            "napis": "11"
+        },
+        "otazka": {
+            "legend": "Úloha 11",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "",
+                    "label": "Zadání:",
+                    "text": "Zapíšeme do buňky vzorec:  =SUMA(A1:A3;B1:B3;C1:C3). Tento vzorec ...(doplňte)"
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "nemá žádný argument",
+                            "2": "má tři argumenty",
+                            "3": "má šest argumentů"
+                        },
+                        "ok": "2"
+                    }
+                }
+            }
+        }
+    },
+    "12": {
+        "navigace": {
+            "napis": "12"
+        },
+        "otazka": {
+            "legend": "Úloha 12",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "uloha12.jpg",
+                    "label": "Zadání:",
+                    "text": "Vzorec na obrázku odkazuje na list1. Jestliže list1 odstraníme, ...(doplňte)"
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "nic se nestane, výsledek vypočítaný vzorcem se nezmění",
+                            "2": "vzorec přestane pracovat",
+                            "3": "v takovém případě není vůbec možné list1 odstranit"
+                        },
+                        "ok": "2"
+                    }
+                }
+            }
+        }
+    },
+    "13": {
+        "navigace": {
+            "napis": "13"
+        },
+        "otazka": {
+            "legend": "Úloha 13",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "uloha13.jpg",
+                    "label": "Zadání:",
+                    "text": "Ve žluté buňce je v tomto případě ...(doplňte)"
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "vzorec",
+                            "2": "pouhé číslo",
+                            "3": "z tohoto obrázku nelze poznat, zda je v buňce vzorec nebo pouhé číslo"
+                        },
+                        "ok": "3"
+                    }
+                }
+            }
+        }
+    },
+    "14": {
+        "navigace": {
+            "napis": "14"
+        },
+        "otazka": {
+            "legend": "Úloha 14",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "",
+                    "label": "Zadání:",
+                    "text": "V tabulce máme sloupec s názvy obcí. <br\/>Z tohoto sloupce máme filtrovat města začínající písmenem A a B.<br\/> Máme přitom použít automatický filtr."
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "To nelze, automatický filtr  filtruje pouze obce od A nebo pouze města od B<br\/>",
+                            "2": "Lze to obejít pouze tím, že si vyfiltrujeme obce od A, zkopírujeme je na jiný list<br\/> a potom vyfiltrujeme obce od B a také je zkopírujeme<br\/>",
+                            "3": "Ano, můžeme takto nastavit filtr bez problémů<br\/>"
+                        },
+                        "ok": "3"
+                    }
+                }
+            }
+        }
+    },
+    "15": {
+        "navigace": {
+            "napis": "15"
+        },
+        "otazka": {
+            "legend": "Úloha 15",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "",
+                    "label": "Zadání:",
+                    "text": "Logická vazba (vztah) platí také při nastavení filtrů ve více sloupcích. <br\/>V případě  filtru platí u podmínek uplatněných na více sloupcích,že ...(doplňte)"
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "v případě nastavení  filtru použitého na více sloupcích <br\/>se uplatňuje vždy jenom logická vazba A (tj. nastavené podmínky platí vždy současně)<br\/>",
+                            "2": "v případě nastavení  filtru použitého na více sloupcích <br\/>se uplatňuje vždy jenom logická vazba NEBO (tj. pokud platí pouze jedna z nastavených podmínek)<br\/>",
+                            "3": "uživatel si může nastavit, zda mezi podmínkami nastavenými na více sloupcích <br\/> (při použití automatického filtru) bude platit logická vazba A či NEBO<br\/>"
+                        },
+                        "ok": "3"
+                    }
+                }
+            }
+        }
+    },
+    "16": {
+        "navigace": {
+            "napis": "16"
+        },
+        "otazka": {
+            "legend": "Úloha 16",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "",
+                    "label": "Zadání:",
+                    "text": "V tabulce máme nastaven automatický filtr pro více sloupců současně.<br\/> V některých sloupcích bychom však potřebovali filtr zrušit."
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "To nelze - musíme vypnout celý filtr <br\/>a pak jej znovu nastavit jenom v těch sloupcích, kde potřebujeme<br\/>",
+                            "2": "To je jednoduché - zobrazíme dialogové okno Upravit filtrování <br\/>a potom označíme ty sloupce, u nichž potřebujeme filtr vypnout<br\/>",
+                            "3": "Filtr můžeme u kteréhokoli jednotlivého sloupce kdykoli zrušit, <br\/>ponecháme tedy jenom filtrování potřebných sloupců<br\/>"
+                        },
+                        "ok": "3"
+                    }
+                }
+            }
+        }
+    },
+    "17": {
+        "navigace": {
+            "napis": "17"
+        },
+        "otazka": {
+            "legend": "Úloha 17",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "uloha17.jpg",
+                    "label": "Zadání:",
+                    "text": "Z obrázku je zřejmé, že v tabulce ...(doplňte)"
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "se používá filtr pro údaje ve sloupci A",
+                            "2": "se používá filtr pro údaje ve sloupci A, D, E, F",
+                            "3": "se používá filtr ve sloupcích B a C"
+                        },
+                        "ok": "3"
+                    }
+                }
+            }
+        }
+    },
+    "18": {
+        "navigace": {
+            "napis": "18"
+        },
+        "otazka": {
+            "legend": "Úloha 18",
+            "zadani": {
+                "type": "Text_s_obrazkem_1_z_N",
+                "obsah": {
+                    "img_file_name": "",
+                    "label": "Pokyn:",
+                    "text": "Vyberte odpověď a stiskněte tlačítko Pokračuj jen v  případě,<br\/>že jste již na všechny otázky odpověděli a chcete test ukončit.<br\/><br\/><b>Chcete-li se k některým otázkám vrátit, použijte tlačítka v záhlaví formuláře!<\/b><br\/><br\/>"
+                },
+                "odpoved": {
+                    "type": "radia",
+                    "data": {
+                        "label": "Vyberte odpověď:",
+                        "content": {
+                            "1": "ukončit"
+                        },
+                        "ok": "1"
+                    }
+                }
+            }
+        }
+    }
+}

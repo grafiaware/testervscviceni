@@ -1,0 +1,25 @@
+[info] [2019-11-19 15:49:59] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ErrorsLogger.log.
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 15:49:59] Undefined variable: propertyName on line 292 in file D:\ApacheRoot\TesterVScviceni\Tester\Model\Db\Dao\DaoAbstract.php
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 15:49:59] Undefined variable: tableMetaData on line 292 in file D:\ApacheRoot\TesterVScviceni\Tester\Model\Db\Dao\DaoAbstract.php
+[info] [2019-11-19 15:51:43] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ErrorsLogger.log.
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 15:51:43] Undefined variable: propertyName on line 292 in file D:\ApacheRoot\TesterVScviceni\Tester\Model\Db\Dao\DaoAbstract.php
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 15:51:43] Undefined variable: tableMetaData on line 292 in file D:\ApacheRoot\TesterVScviceni\Tester\Model\Db\Dao\DaoAbstract.php
+[info] [2019-11-19 16:05:03] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ErrorsLogger.log.
+[debug] PHP error or unknown user error type: E_WARNING [2] [2019-11-19 16:05:03] Declaration of Pes\Database\Statement\Statement::execute(?array $input_parameters = NULL): bool should be compatible with PDOStatement::execute($bound_input_params = NULL) on line 15 in file D:\ApacheRoot\TesterVScviceni\vendor\pes\pes\src\Database\Statement\Statement.php
+[info] [2019-11-19 16:18:11] Logger start. Log file: D:/ApacheRoot/TesterVScviceni/testLogs/Errors/ErrorsLogger.log.
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:11] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:18] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:21] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:51] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:54] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:54] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:55] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:56] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:57] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:57] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:58] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:58] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:59] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:18:59] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:19:00] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval
+[debug] PHP error or unknown user error type: E_NOTICE [8] [2019-11-19 16:19:04] Undefined variable: odpovedAggregateE on line 1 in file xdebug://debug-eval

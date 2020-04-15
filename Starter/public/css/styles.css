@@ -1,0 +1,130 @@
+root { 
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/*GRID*/
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {  /*pro všechny .col-xx*/
+    float: left;
+    padding: .2em;
+    border: 1px solid red;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+    border: 1px solid blueviolet;
+}
+
+/*STYLES*/
+
+body {
+    background-color: silver;
+    padding: 0px;
+    margin: 1em;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 1em;
+}
+
+div.header,div.footer {
+    padding:0.5em;
+    color:white;
+    background-color: grey;
+}
+
+div.left {
+    margin:0;
+    padding: 0.4em;
+}
+
+div.content {
+    border-top:1px solid gray;
+    border-left:1px solid gray;
+    padding:1em;
+}
+
+h1 {
+    font-size: 1.4em;
+    color: #48AAAA;
+}
+
+h2 {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 1.1em;
+    color: #295294;
+}
+
+h3 {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 0.8em;
+    border-style: ridge;
+    border-width: 3px;
+    background-color: #375D81;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-weight: bolder;
+    padding: 8px 16px;         
+}
+h4 {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 0.8em;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: #375D81;
+    border-radius: 5px;
+    color: #375D81;
+    font-weight: bolder;
+    padding: 4px 32px;        
+}
+p {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.message {
+    margin: 0.3em;
+    padding:0.3em;
+    color: tomato;
+    background-color:lightgrey;
+}
+
+.help {
+    font-size: smaller;
+    color: midnightblue;
+}
+
+.readonly {
+    background-color: #b7cebd;
+}
+
+
+.logo {
+        display: flex;
+        height: 4.5em;        
+}
+.vsCervenaSrdce {
+    color: red;
+}
+.vsUpozorneni {
+    /*background-color: khaki;*/
+    color: red;
+}
+

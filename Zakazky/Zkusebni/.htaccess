@@ -1,0 +1,18 @@
+Options -Indexes
+Require all granted
+
+RewriteEngine On
+RewriteBase "/Tester/Accessor/"
+
+# nasledujici radek odkomentuj, pokud chces zamezit vykonavani testu - vždy presmeruje na stop.php
+#RewriteRule (.*) "Stop.php?query=$1&requestfilename=%{REQUEST_FILENAME}" [L]
+
+# Podstrceni ciloveho skriptu pro spravny tvar volani. 
+# Rozpoznavany retezec v podmince musi byt shodne zadan take ve tride TestContext v konfiguraci testu
+# Nazec skriptu Relocator.php a promenne runparam musi byt zachovan.
+RewriteCond %{REQUEST_FILENAME} ^.*run-
+RewriteRule ^run-(.*) "Relocator.php?runparam=$1" [QSA,L]
+
+# Podstrceni ciloveho skriptu pro nespravny tvar volani.
+# Nazev skriptu Relokator.php a promennych query a requestfilename musi byt zachovan.
+RewriteRule (.*) "Forbidden.php?query=$1&requestfilename=%{REQUEST_FILENAME}" [QSA,L]

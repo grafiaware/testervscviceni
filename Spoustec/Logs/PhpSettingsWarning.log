@@ -1,0 +1,2 @@
+[warning] [2018-01-16 12:24:12] Je vypnutý 'session.use_strict_mode'!
+[warning] [2018-01-16 12:24:12] Garbage collection se spouští jen jednou za 1000 spuštění skriptu! Např. session tak může být uklizena za dlouhou dobu.

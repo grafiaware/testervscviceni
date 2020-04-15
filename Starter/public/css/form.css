@@ -1,0 +1,108 @@
+/* 
+    Created on : 12.3.2014, 13:10:30
+    Author     : pes2704
+*/
+
+/*pozor, pozor - ve formularich jsou vsude rozesety in-line styly - muze se to hadat*/
+form {
+    font-size: 1em;    
+    font-family: Arial,Helvetica,sans-serif;
+}
+
+form p {
+    /*color: #626364;*/    
+    color: black;
+    margin: 0;
+    padding: 0 0 .4em;
+}
+
+form textarea {
+    width: 100%;
+    /*color: #626364;*/    
+    color: black;
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0 0 .4em;
+}
+
+fieldset {
+    background-color: #F3F3F3;
+    border: 1px solid #C0C0C0;
+    display: block;
+    /*line-height: 1em;*/
+    margin-bottom: .3em;
+    padding: .5em 1em .2em;
+}
+
+fieldset legend {
+    background-color: #375D81;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-weight: normal;
+    padding: .2em 1em;
+}
+
+fieldset fieldset legend {
+    color: black;
+    /*font-weight: bold;*/
+    background-color: #DDDDFF;
+}
+
+fieldset fieldset fildset legend {
+    color: black;
+    /*font-weight: bold;*/
+    background-color: #375D81;
+}
+fieldset p {
+    color: #626364;
+    /*line-height: 1em;*/
+    margin: 0;
+    padding: 0 0 5px;
+}
+
+fieldset .checkbox-grid li{
+    display: block;
+    float: left;
+    width: 50%;
+}
+
+fieldset div {
+    border: 1px solid #C0C0C0;
+    border-radius: 5px;
+    margin: .2em .4em .2em .4em;
+    padding: .2em .4em .2em .4em;
+    
+}
+/*ve formularich jsou texty jen tak volne - nejsou v <p> ani nicem podobnem*/
+fieldset {  
+    color: #424364;
+    line-height: 1.2em;
+}
+
+button[type=submit]{
+    font-weight: bolder;
+    border-radius: 7px;
+    margin: .2em .4em .2em .4em;
+    padding: .2em .4em .2em .4em;    
+}
+
+/*
+input:required,
+textarea:required {
+  border-color: blueviolet !important;
+}
+
+label + input:required {
+  color: blueviolet;
+}
+
+select:required {
+    border: 1px solid blueviolet;
+  background: linear-gradient(blueviolet, blueviolet);
+}
+
+input:required[type=radio]{
+    outline: 1px solid blueviolet;
+    border-radius: 10px;
+}*/
+

@@ -1,0 +1,27 @@
+{
+    "name": "Spoustec",
+    "description": "Spouštěč čehosi.",
+    "license": "na dotaz",
+    "keywords": ["spoustec", "tester"],
+    "authors": [
+        {
+            "name": "Vlaďka Selnerová",
+            "email": "selnerova@grafia.cz"
+        }
+    ],
+    "require": {
+        "pes/pes": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spoustec\\": "Spoustec",
+            "Tester\\": "Tester",
+            "Test\\": "Test",
+            "Model\\": "Model"
+        },
+        "psr-0": {
+            "HTML_": "c:\\xampp\\php\\pear",
+            "Tester_": ""
+        }
+    }
+}

@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} run
+RewriteRule ^ stop.php [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ relocation.php [L]

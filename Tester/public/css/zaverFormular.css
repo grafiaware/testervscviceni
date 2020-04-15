@@ -1,0 +1,25 @@
+/*STYLES*/
+
+body {
+    padding-left: 5em;
+    font-family: Arial,sans-serif;
+    font-size: small;
+
+    background-color: bisque;
+}
+
+.vsCervena {
+    color: red;
+}
+
+.vsZelena {
+    color: green;
+}
+.vsUpozorneniRed {
+    background-color: red;
+    color: white;
+}
+.vsUpozorneniGreen {
+    background-color: green;
+    color: white;
+}
