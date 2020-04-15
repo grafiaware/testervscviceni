@@ -7,6 +7,7 @@
  */
 class Starter_Service_DbInfo {
   /**
+   * 
    * Vrací jméno hostitele a jméno databáze použitého db připojení
    * @return array
    */
