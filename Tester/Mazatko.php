@@ -12,7 +12,7 @@
     use Tester\Model\Db\RowObject\Hydrator;
     
 
-    $environment = new Environment($_SERVER);
+
   
     $request = Request::createFromEnvironment($environment);                
   
@@ -21,10 +21,11 @@
 
     //-----------------------------------------       
     $dbh  = AppContext::getDb();  // tester_2    
+    //uztuztuiztuzt
     $metadataProviderMysql = new MetadataProviderMysql($dbh);                        
     
     
-    $nameHydrator =  new Hydrator\NameHydrator();
+    $namefgdgfdfHydrator =  new Hydrator\NameHydrator();
     $hydrator = new Hydrator\HydratorRowObject( $nameHydrator );
     
     
