@@ -11,7 +11,8 @@
         }
     ],
     "require": {
-        "pes/pes": "@dev"
+        "pes/pes": "@dev",
+        "phpunit/phpunit": "^9"
     },
     "autoload": {
         "psr-4": {
