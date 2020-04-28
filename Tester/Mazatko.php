@@ -10,22 +10,21 @@
     use Tester\AppContext;    
     //use Pes\Logger\FileLogger;
     use Tester\Model\Db\RowObject\Hydrator;
-    
+    ////*****oprava mazatka doma UTERY****
 
+    $environment = new Environment($_SERVER);
 
-  
-    $request = Request::createFromEnvironment($environment);                
-  
+    $request = Request::createFromEnvironment($environment);                  
     //-----------------------------------------
     //$mojeSessionHandler = new Handler\Session(); //+start()    
 
     //-----------------------------------------       
     $dbh  = AppContext::getDb();  // tester_2    
-    //uztuztuiztuzt
+    //uztuztuiztuzt *****oprava mazatka doma UTERY****
     $metadataProviderMysql = new MetadataProviderMysql($dbh);                        
     
     
-    $namefgdgfdfHydrator =  new Hydrator\NameHydrator();
+    $nameHydrator =  new Hydrator\NameHydrator();
     $hydrator = new Hydrator\HydratorRowObject( $nameHydrator );
     
     
