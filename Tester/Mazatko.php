@@ -10,7 +10,7 @@
     use Tester\AppContext;    
     //use Pes\Logger\FileLogger;
     use Tester\Model\Db\RowObject\Hydrator;
-    ////*****oprava mazatka doma UTERY****
+    ////*****oprava mazatka doma UTERY  2 ****
 
     $environment = new Environment($_SERVER);
 
