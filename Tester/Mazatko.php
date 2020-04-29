@@ -1,5 +1,5 @@
 <?php
-// vetevka_moje_1
+// napsano v vetevka_moje_1, mergovano do vetevka_moje a opraveno ve vetevka_moje
     include '../../Pes/Pes/src/Bootstrap/Bootstrap.php';
       
     use Pes\Database\Metadata\MetadataProviderMysql;
