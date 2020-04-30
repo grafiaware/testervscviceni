@@ -41,5 +41,3 @@
     //samostatne nelze mazat  kvuli integrity constrain violation - cizi klice
     $ticketPouzityRepo  = new \Tester\Model\Db\Dao\TicketPouzityDao ($dbh, 'ticket_pouzity', $metadataProviderMysql, $hydrator);
     $ticketPouzityRepo->deleteAll();
-     
-    $ticketPouzityRepo->deleteAll();
