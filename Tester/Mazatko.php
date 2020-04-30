@@ -1,5 +1,5 @@
 <?php
-// napsano v vetevka_moje_1, mergovano do vetevka_moje a opraveno ve vetevka_moje
+
     include '../../Pes/Pes/src/Bootstrap/Bootstrap.php';
       
     use Pes\Database\Metadata\MetadataProviderMysql;
@@ -10,7 +10,6 @@
     use Tester\AppContext;    
     //use Pes\Logger\FileLogger;
     use Tester\Model\Db\RowObject\Hydrator;
-    ////*****oprava mazatka doma UTERY  2 ****
 
     $environment = new Environment($_SERVER);
 
@@ -20,7 +19,7 @@
 
     //-----------------------------------------       
     $dbh  = AppContext::getDb();  // tester_2    
-    //uztuztuiztuzt *****oprava mazatka doma UTERY****
+    
     $metadataProviderMysql = new MetadataProviderMysql($dbh);                        
     
     
@@ -41,4 +40,6 @@
     
     //samostatne nelze mazat  kvuli integrity constrain violation - cizi klice
     $ticketPouzityRepo  = new \Tester\Model\Db\Dao\TicketPouzityDao ($dbh, 'ticket_pouzity', $metadataProviderMysql, $hydrator);
+    $ticketPouzityRepo->deleteAll();
+     
     $ticketPouzityRepo->deleteAll();
