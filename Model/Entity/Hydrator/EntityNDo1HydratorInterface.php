@@ -15,7 +15,7 @@ interface EntityNDo1HydratorInterface {
      * Hydratuje objekt entity hodnotami  z $rowObjectu.
      * 
      */
-    public function hydrate( TableEntityInterface $entity, RowObjectInterface $rowObject ): void;
+    public function hydrate( EntityInterface $entity, RowObjectInterface $rowObject ): void;
     
     
    
@@ -23,7 +23,7 @@ interface EntityNDo1HydratorInterface {
      * Extrahuje hodnoty z objektu $entity do $rowObjectu.     
      * 
      */
-    public function extract ( TableEntityInterface $entity, RowObjectInterface $rowObject): void;  
+    public function extract ( EntityInterface $entity, RowObjectInterface $rowObject): void;  
     
     
     

@@ -1,10 +1,10 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-use Model\Entity\TestovaciTableEntity;
+use Model\Entity\TestovaciEntity;
 use Model\Entity\Hydrator\EntityHydrator;
 use Model\RowObject\RowObjectInterface;
-use Model\Entity\Hydrator\Filtr\EntityHydratorFiltr;
+use Model\Entity\Hydrator\Filtr\EntityHydratorFiltrVse;
 
 
 
@@ -105,11 +105,11 @@ class EntityHydratorTest extends TestCase {
             $testovaciTableRowObject->$key = $this->poleHodnotRowObjectu[ $key ];
         }        
         // nastaveni - filtr k hydrataci 
-        $entityHydratorFiltr = new EntityHydratorFiltr();        
+        $entityHydratorFiltr = new EntityHydratorFiltrVse();        
         $entityHydratorFiltr->setSeznamVlastnostiZRowOKHydrataciEntity( ['prvekChar', 'prvekText', 'prvekVarchar' ] );  //vlastnosti rowobjectu!!!!!
         $entityHydrator = new EntityHydrator( $entityHydratorFiltr );      
         
-        $testovaciTableEntity  =  new TestovaciTableEntity();        
+        $testovaciTableEntity  =  new TestovaciEntity();        
         $entityHydrator->hydrate( $testovaciTableEntity, $testovaciTableRowObject );     
         
         //kontrola hydratace

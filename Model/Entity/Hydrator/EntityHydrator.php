@@ -4,10 +4,10 @@ namespace Model\Entity\Hydrator;
 use Model\RowObject\RowObjectInterface;
 
 //use Model\Entity\EntityInterface;
-use Model\Entity\TableEntityInterface;
+use Model\Entity\EntityInterface;
 //use Model\Entity\TableEntityAbstract;  ??????
 
-use Model\Entity\Hydrator\Filtr\EntityHydratorFiltr;
+use Model\Entity\Hydrator\Filtr\EntityHydratorFiltrVse;
 
 /**
  * Bezstavový?? hydrátor
@@ -16,8 +16,8 @@ use Model\Entity\Hydrator\Filtr\EntityHydratorFiltr;
 class EntityHydrator implements EntityHydratorInterface {
     
     /**
-     * Filtr obsahuje seznam jmen vlastností k hydrataci/extrakci.
-     * @var EntityHydratorFiltr
+     * Filtr obsahuje seznam jmen  vlastností rowObjektu k hydrataci/extrakci.
+     * @var EntityHydratorFiltrVse
      */   
     private $entityHydratorFiltr;
 
@@ -34,16 +34,16 @@ class EntityHydrator implements EntityHydratorInterface {
      * 
      * Neřídí se vlastnostmi entity. Vlastnosti určené k hydrataci (zjistí se z filtru $this->EntityHydratorFiltr) hydratuje.
      * 
-     * @param TableEntityInterface $entity
+     * @param EntityInterface $entity
      * @param RowObjectInterface $rowObject
      * @throws \UnexpectedValueException
      */
-    public function hydrate( TableEntityInterface $entity, RowObjectInterface $rowObject ) {        
+    public function hydrate( EntityInterface $entity, RowObjectInterface $rowObject ) {        
 //        foreach (get_class_methods(get_class($entity)) as $methodName) {
 //            if (strpos($methodName, 'set') === 0) {
 //                $entity->$methodName($value);        }     }        
        
-        $poleVlastnostiKHydrataci = $this->entityHydratorFiltr->getSeznamVlastnostiZRowOKHydrataciEntity();
+        //$poleVlastnostiKHydrataci = $this->entityHydratorFiltr->getSeznamVlastnostiZRowOKHydrataciEntity();
 
         $jmenoTridy = get_class($entity);
         $jmenoParentTridy = get_parent_class($entity);
@@ -103,7 +103,7 @@ class EntityHydrator implements EntityHydratorInterface {
      * 
      
      */
-    public function extract( TableEntityInterface $entity, RowObjectInterface $rowObject) { 
+    public function extract( EntityInterface $entity, RowObjectInterface $rowObject) { 
         
 //  ==================   ANI ZDALEKA NENI HOTOVE ================ neexistuji sety gety row objektu!!!!!!!!!!!!!!!!!!
         
@@ -156,22 +156,11 @@ class EntityHydrator implements EntityHydratorInterface {
    
     /**
      * 
-     * @param EntityHydratorFiltr $entityHydratorFiltr
+     * @param EntityHydratorFiltrVse $entityHydratorFiltr
      */
-    public function setFiltr(  EntityHydratorFiltr $entityHydratorFiltr ) {
+    public function setFiltr(  EntityHydratorFiltrVse $entityHydratorFiltr ) {
         $this->entityHydratorFiltr = $entityHydratorFiltr;
     }
-    
-    
-    /**
-     * 
-     * @return EntityHydratorFiltr 
-     */
-    public function getFiltr(  ) {
-       return  $this->entityHydratorFiltr;
-    }    
-    
-    
     
     
     

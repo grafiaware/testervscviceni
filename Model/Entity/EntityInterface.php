@@ -6,6 +6,6 @@ namespace Model\Entity;
  *
  * @author vlse2610
  */
-interface TableEntityInterface {
+interface EntityInterface {
     //put your code here
 }

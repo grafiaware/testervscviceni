@@ -5,7 +5,7 @@ namespace Model\Entity;
  *
  * @author vlse2610
  */
-interface TestovaciTableEntityInterface {
+interface TestovaciEntityInterface {
     
  
     public function getUidPrimarniKlicZnaky() ;

@@ -2,14 +2,14 @@
 namespace Model\Entity;
 
 //use Model\Entity\TestovaciTableEntityInterface;
-use Model\Entity\TableEntityAbstract;
+use Model\Entity\EntityAbstract;
 
 /**
  * Description of KonfiguraceTestu 
  * 
  * @author vlse2610
  */
-class TestovaciTableEntity /*implements TestovaciTableEntityInterface */  extends TableEntityAbstract  {    
+class TestovaciEntity /*implements TestovaciTableEntityInterface */  extends EntityAbstract  {    
     private $uidPrimarniKlicZnaky ;         
     private $prvekVarchar;
     private $prvekChar;

@@ -2,13 +2,13 @@
 
 namespace Model\Entity;
 
-use Model\Entity\TableEntityInterface;
+use Model\Entity\EntityInterface;
 
 /**
  * Description of TableEntityAbstract
  *
  * @author vlse2610
  */
-class TableEntityAbstract implements TableEntityInterface {
+class EntityAbstract implements EntityInterface {
     //put your code here
 }
