@@ -10,7 +10,6 @@ use Model\Entity\Hydrator\Filtr\EntityHydratorFiltrInterface;
  */
 class EntityHydratorFiltrVseVyjmenovane implements EntityHydratorFiltrInterface {    
     /**
-     * asi budou jeden
      * @var array
      */
     private $seznamVlastnostiZRowO;    //z rowobjectu
@@ -38,6 +37,8 @@ class EntityHydratorFiltrVseVyjmenovane implements EntityHydratorFiltrInterface 
         $this->seznamVlastnostiZRowO = $poleVlastnosti;
         return $this;
     }
+    
+    
     
     public function getIterator() {
         

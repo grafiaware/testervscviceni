@@ -27,7 +27,7 @@ interface EntityHydratorFiltrInterface extends \IteratorAggregate{  //+ vzlucov\
 //     */
 //    public function getSeznamVlastnostiZRowO(): array;
            
-    
-     public function getIterator() ;
+    //Vrací vlastnosti, ktere budou nastavoány
+    public function getIterator() ;
     
 }

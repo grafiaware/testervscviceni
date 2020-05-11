@@ -5,11 +5,11 @@
 namespace Model\Entity\Hydrator;
 
 /**
- * Description of EntityHydratorNDo1
- *
+ * Description of 
+ *  *
  * @author vlse2610
  */
-class EntityNDo1Hydrator {
+class NDo1EntityHydrator {
      /**
      * 
      * @var EntityHydratorFiltr

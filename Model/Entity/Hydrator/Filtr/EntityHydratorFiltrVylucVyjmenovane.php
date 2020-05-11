@@ -11,7 +11,7 @@ use Model\Entity\Hydrator\Filtr\EntityHydratorFiltrInterface;
 class EntityHydratorFiltrVylucVyjmenovane  implements EntityHydratorFiltrInterface {
     //put your code here
     
-    private $seznamVlastnostiZRowO;    //z rowobjectu
+    private $seznamVlastnostiZRowO;    //z rowobjectu, k vylouceni
     
          
     public function __construct() {        

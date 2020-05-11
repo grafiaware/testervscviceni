@@ -2,13 +2,13 @@
 
 namespace Model\Entity\Hydrator;
 
-use Filtr\EntityNDo1HydratorFiltrInterface;
+use Filtr\EntityHydratorFiltrNDo1Interface;
 
 /**
  *
  * @author vlse2610
  */
-interface EntityNDo1HydratorInterface {
+interface NDo1EntityHydratorInterface {
     
     
      /**
@@ -32,7 +32,7 @@ interface EntityNDo1HydratorInterface {
     * @param EntityHydratorFiltr $entityHydratorFiltr
     * @return void
     */
-    public function setFiltr( EntityNDo1HydratorFiltrInterface $entityNDo1HydratorFiltr ) :void ;
+    public function setFiltr( EntityHydratorFiltrNDo1Interface $entityNDo1HydratorFiltr ) :void ;
     
     /**
      * 
