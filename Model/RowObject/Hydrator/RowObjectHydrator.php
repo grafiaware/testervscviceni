@@ -23,12 +23,11 @@ class RowObjectHydrator implements RowObjectHydratorInterface {
      * @var TableMetadataInterface
      */
     private $tableMetadata;
-
+    
     /**
      * 
-     * 
-     * @param \Model\RowObject\Hydrator\NameHydratorInterface $nameHydrator
-     * @param TableMetadataInterface $tableMetadata informace o tabulce, jejiž sloupce zpracovává.
+     * @param NameHydratorInterface $nameHydrator
+     * @param TableMetadataInterface $tableMetadata
      */
     public function __construct(NameHydratorInterface $nameHydrator, TableMetadataInterface $tableMetadata) {
         $this->nameHydrator = $nameHydrator;
@@ -48,7 +47,7 @@ class RowObjectHydrator implements RowObjectHydratorInterface {
      * @throws Exception\UnknownPropertyNameException
      * @throws Exception\DatetimeConversionFailureException
      */
-    public function hydrate( RowObjectInterface $rowObject, &$row): void {          //&row(predani odkazem)   &-zde neni uplne nutne, cilem je vracet rowObject (objekt se predava automat.vzdy odkazem)
+    public function hydrate( RowObjectInterface $rowObject, &$row): void {  //&row(predani odkazem)   &-zde neni uplne nutne, cilem je vracet rowObject (objekt se predava automat.vzdy odkazem)
         //$properties = get_object_vars($rowObject);  // pole s vlastnostmi viditelnymi objektu
                    
         foreach ($rowObject as $propertyName=>$propertyValue) {  

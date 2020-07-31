@@ -3,33 +3,15 @@ namespace Model\Dao;
 
 use Model\RowObject\TestovaciTableRow;
 use Model\RowObject\RowObjectInterface;
-
-//CREATE TABLE `testovaci_table` (
-// uid_primarni_klic_znaky  // varchar(10) COLLATE utf8_czech_ci NOT NULL,
-// pole_varchar  // varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
-// pole_char    // char(255) COLLATE utf8_czech_ci DEFAULT NULL,
-// pole_text    // text COLLATE utf8_czech_ci,
-// pole_integer  // int(11) DEFAULT NULL,
-// pole_date     //date DEFAULT NULL,
-// pole_datetime    // datetime DEFAULT NULL,
-// pole_timestamp   //  timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-//  PRIMARY KEY (`uid_primarni_klic_znaky`)
-//) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
-//   public $uidPrimarniKlicZnaky ;            
-//    public $poleVarchar;
-//    public $poleChar;
-//    public $poleText;
-//    public $poleInteger;
-//    public $poleDate;
-//    public $poleDatetime;
-//    public $poleTimestamp;
+use Model\Dao\TestovaciTableDaoInterface;
+use Model\Dao\DaoAbstract;
 
 /**
  * Description of 
  *
  * @author vlse2610
  */
-class TestovaciTableDao extends DaoAbstract  {
+class TestovaciTableDao extends DaoAbstract implements TestovaciTableDaoInterface  {
 
     /**
      * Metoda get v TestovaciTableDao
@@ -86,15 +68,21 @@ class TestovaciTableDao extends DaoAbstract  {
                         . 'poleText = :poleText, ' 
                         . 'poleInteger = :poleInteger, ' 
                         . 'poleDate = ' . date() . ':, '
-                        . 'poleDatetime = ' . datetime() . ':, '                        
-                            //'poleTimestamp) '                                            
+                        . 'poleDatetime = ' . datetime() . ':, '
+                            //'poleTimestamp) '  
+                        . 'titulPred = :titulPred, '  
+                        . 'titulZa = :titulZa, '
+                        . 'jmeno = :jmeno, '  
+                        . 'prijmeni = :prijmeni, '                                                                       
                         . "WHERE uid_primarni_klic_znaky = :uid_primarni_klic_znaky";
                 $this->execUpdate($sqlQuery, $rowObject);
         } else {
                 $sqlQuery = "INSERT INTO testovaci_table  "
-                  . "( uid_primarni_klic_znaky, poleVarchar, poleChar, poleText, poleInteger, poleDate, poleDatetime)"                        
+                  . "( uid_primarni_klic_znaky, poleVarchar, poleChar, poleText, poleInteger, poleDate, poleDatetime,"
+                  . "  titulPred, titulZa, jmeno, prijmeni )"                        
                   . "VALUES  "
-                  . "( :uid_primarni_klic_znaky, :poleVarchar, :poleChar, :poleText, :poleInteger,  date(), datetime() )" ;
+                  . "( :uid_primarni_klic_znaky, :poleVarchar, :poleChar, :poleText, :poleInteger,  date(), datetime(),"
+                  . "  titulPred, titulZa, jmeno, prijmeni )" ;
                 $this->execInsertWithUid($sqlQuery, $rowObject, 'uid_primarni_klic_znaky');
         }
     }
@@ -134,3 +122,24 @@ class TestovaciTableDao extends DaoAbstract  {
 //  `pole_timestamp` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
 //  PRIMARY KEY (`uid_primarni_klic_znaky`)
 //) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
+
+
+//CREATE TABLE `testovaci_table` (
+// uid_primarni_klic_znaky  // varchar(10) COLLATE utf8_czech_ci NOT NULL,
+// pole_varchar  // varchar(255) COLLATE utf8_czech_ci DEFAULT NULL,
+// pole_char    // char(255) COLLATE utf8_czech_ci DEFAULT NULL,
+// pole_text    // text COLLATE utf8_czech_ci,
+// pole_integer  // int(11) DEFAULT NULL,
+// pole_date     //date DEFAULT NULL,
+// pole_datetime    // datetime DEFAULT NULL,
+// pole_timestamp   //  timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+//  PRIMARY KEY (`uid_primarni_klic_znaky`)
+//) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
+//   public $uidPrimarniKlicZnaky ;            
+//    public $poleVarchar;
+//    public $poleChar;
+//    public $poleText;
+//    public $poleInteger;
+//    public $poleDate;
+//    public $poleDatetime;
+//    public $poleTimestamp;

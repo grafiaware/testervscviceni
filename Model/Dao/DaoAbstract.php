@@ -7,14 +7,14 @@ use Model\RowObject\Hydrator\RowObjectHydratorInterface;
 use Pes\Database\Handler\HandlerInterface;
 use Pes\Database\Metadata\MetadataProviderInterface;
 use Pes\Database\Metadata\TableMetadataInterface;
-use Pes\Database\Metadata\ColumnMetadataInterface;
+//use Pes\Database\Metadata\ColumnMetadataInterface;
 
 /**
  * Description of RepositoryAnstract
  *
  * @author vlse2610
  */
-abstract class DaoAbstract implements DaoInterface {
+abstract class DaoAbstract /*implements DaoInterface*/ {
 
     /**
      * @var HandlerInterface
@@ -98,7 +98,7 @@ abstract class DaoAbstract implements DaoInterface {
                 $rowObjects[] = $this->createRowObject($resultRow, $rowObjectClassName);
             }
         } else {
-            throw new DbDaoException('(selectCollection) -  Selhal SQL příkaz select.',0,$e);
+            throw new DbDaoException('(selectCollection) -  Selhal SQL příkaz select.',0, $e);
         }
         return $rowObjects ?? NULL;
     }

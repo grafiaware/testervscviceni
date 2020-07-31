@@ -2,10 +2,20 @@
 
 namespace Model\Entity;
 
+use Model\Entity\Identity\IdentityInterface;
+
+ 
 /**
  *
  * @author vlse2610
  */
 interface EntityInterface {
-    //put your code here
+    
+    /**
+     * 
+     * @return IdentityInterface
+     */
+    public function getIdentity(): IdentityInterface;
+    
+
 }
