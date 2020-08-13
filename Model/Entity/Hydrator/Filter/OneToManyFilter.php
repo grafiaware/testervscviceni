@@ -8,6 +8,8 @@ use Model\Entity\Hydrator\Filter\OneToManyFilterInterface;
 
 class OneToManyFilter implements OneToManyFilterInterface {
      /**
+     * Filtr pro hydrator typu OneToMany (1 vlastnost entity To many vlastnosti rowobject) obsahuje seznam jmen pro vytvoreni jmena metody entity k hydrataci/extrakci 
+     * a ke kazdemu jmenu prislusny seznam jmen  vlastností row objektu.
      * @var array
      */
     private $poleJmen;    

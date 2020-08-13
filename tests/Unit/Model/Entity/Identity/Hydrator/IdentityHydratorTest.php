@@ -1,4 +1,6 @@
 <?php
+namespace Test\IdentityHydratorTest;
+
 use PHPUnit\Framework\TestCase;
 
 use Model\Entity\Identity\Hydrator\IdentityHydrator;

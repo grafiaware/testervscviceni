@@ -1,4 +1,6 @@
 <?php
+namespace Test\OneToOneFilterTest;
+
 use PHPUnit\Framework\TestCase;
 
 use Model\Entity\Hydrator\Filter\OneToOneFilter;

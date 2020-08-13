@@ -1,10 +1,12 @@
 <?php
+namespace Test\AttributeNameIdentityHydratorTest;
+
 use PHPUnit\Framework\TestCase;
 
 use Model\Entity\Identity\Hydrator\NameHydrator\AttributeNameHydrator;
 
 /**
- * Description of FieldAttributeNameHydratorTest
+ * Description of AttributeNameIdentityHydratorTest
  *
  * @author vlse2610
  */

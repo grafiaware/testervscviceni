@@ -17,7 +17,7 @@ use Model\RowObject\RowObjectInterface;
 class CeleJmenoEntityHydrator implements EntityHydratorInterface {
     
     /**
-     * Filtr obsahuje seznam jmen pro metody entity k hydrataci/extrakci a seznam jmen  vlastností row objektu.
+     * Filtr pro CeleJmenoEntityHydrator obsahuje seznam jmen (pole jmen) pro vytvoreni jmena metody entity k hydrataci/extrakci a ke kazdemu jmenu prislusny seznam jmen  vlastností row objektu.
      * 
      * @var  OneToManyFilterInterface    -  extends \IteratorAggregate
      */

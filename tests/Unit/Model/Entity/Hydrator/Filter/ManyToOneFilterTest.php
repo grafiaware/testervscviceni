@@ -1,11 +1,13 @@
 <?php
+namespace Test\ManyToOneFilterTest;
+
 use PHPUnit\Framework\TestCase;
 
 use Model\Entity\Hydrator\Filter\ManyToOneFilter;
 
 
 /**
- * Description of NToOneFilterTest
+ * Description of ManyToOneFilterTest
  *
  * @author vlse2610
  */
@@ -25,8 +27,7 @@ class ManyToOneFilterTest extends TestCase {
         $this->seznamJmen = [
             "celaAdresa" =>  ["ulice" , "cisloPopisne", "cisloOrientacni" , "mesto"],    
             "celaAdresaPrechodna" =>  ["ulice" , "cisloPopisne", "cisloOrientacni" , "mesto"],    
-            ];            
-        
+        ];                    
     }
     
     /**

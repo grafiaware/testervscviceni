@@ -1,11 +1,13 @@
 <?php
+namespace Test\OneToManyFilterTest;
+
 use PHPUnit\Framework\TestCase;
 
 use Model\Entity\Hydrator\Filter\OneToManyFilter;
 
 
 /**
- * Description of OneToNFilterTest
+ * Description of OneToManyFilterTest
  *
  * @author vlse2610
  */

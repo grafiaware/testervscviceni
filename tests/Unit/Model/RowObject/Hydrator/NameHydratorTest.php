@@ -1,4 +1,6 @@
 <?php
+namespace Test\NameHydratorTest;
+
 use PHPUnit\Framework\TestCase;
 
 use Model\RowObject\Hydrator\NameHydrator;

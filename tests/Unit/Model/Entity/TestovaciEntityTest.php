@@ -1,4 +1,7 @@
 <?php
+namespace Test\IdentityTest;
+
+
 use PHPUnit\Framework\TestCase;
 
 use Model\Entity\Identity\IdentityInterface;

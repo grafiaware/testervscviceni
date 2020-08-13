@@ -6,10 +6,7 @@ namespace Model\Entity\Hydrator\Filter;
  * @author vlse2610
  */
 interface OneToManyFilterInterface  extends \IteratorAggregate {
-  
- //   public function setConfig( array $poleJmen ) : void ;
-        
-    
+      
     //Pozn.
     //getIterator vrací iterovatelný objekt.    
     

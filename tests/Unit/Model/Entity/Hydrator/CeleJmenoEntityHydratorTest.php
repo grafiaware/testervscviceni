@@ -1,6 +1,6 @@
 <?php
-namespace PHPUnit\Test\Hydrator;  
-//namespace Test\Hydrator;
+namespace Test\CeleJmenoEntityHydratorTest;
+
 
 use PHPUnit\Framework\TestCase;
 
@@ -14,6 +14,7 @@ use Model\Entity\Hydrator\CeleJmenoGluerInterface;
 use Model\Entity\EntityInterface;
 use Model\Entity\EntityAbstract;
 use Model\RowObject\RowObjectInterface;
+
 
 class OneToManyFilterMock implements OneToManyFilterInterface {
      /**
@@ -42,12 +43,10 @@ class MethodNameHydratorMock implements MethodNameHydratorInterface {
 
 class AttributeNameHydratorMock implements AttributeNameHydratorInterface {   
     public function hydrate( string $name ) : string {   
-        return $name  ;
-        //return ucfirst( $name ) ;
+        return $name  ;        
     }  
     public function extract( string $name )  : string {                
-       return  $name  ;        
-       //return lcfirst( $name ) ;              
+       return  $name  ;                         
     }
 }
 
@@ -78,6 +77,7 @@ interface EntityInterfaceMock extends EntityInterface {
         public function getCeleJmeno();       
         public function setCeleJmeno( string $celeJmeno) :TestovaciEntityMock;               
 } 
+
 class TestovaciEntityMock  extends EntityAbstract implements EntityInterfaceMock   {       
     private $celeJmeno;  
     private $celeJmenoDruhe;  
@@ -134,6 +134,7 @@ class CeleJmenoGluerMock implements CeleJmenoGluerInterface {
         $celeJmeno = implode("|", $castiJmenaSerazenePodleFiltru);
         return $celeJmeno;       
     }
+    
     /**
      * 
      * @param string $celeJmeno vstupujici retezec ( spojene části jména s oddelovacem '|')
@@ -152,6 +153,8 @@ class CeleJmenoGluerMock implements CeleJmenoGluerInterface {
         return $casti;
     } 
 }
+
+
 //###################################################################################
 /**
  * Description of CeleJmenoEntityHydratorTest
@@ -159,14 +162,14 @@ class CeleJmenoGluerMock implements CeleJmenoGluerInterface {
  * @author vlse2610
  */
 class CeleJmenoEntityHydratorTest extends TestCase {     
-    private $seznamJmen  ;
+    private $poleJmen  ;
     
     public function setUp(): void {     
          // 1 -  nastaveni "konstant"               
     }        
     
     public function testCeleJmenoEntityHydrate() : void {
-        $this->seznamJmen = [
+        $this->poleJmen = [
 //            "celeJmeno" =>  ["jmeno" , "prijmeni"],
 //            "celeJmenoDruhe" => ["jmeno2" , "prijmeni2"]
               "celeJmeno" =>  ["prijmeni", "jmeno" ],
@@ -184,7 +187,7 @@ class CeleJmenoEntityHydratorTest extends TestCase {
        
         // 3 - filtr, nastaveni filtru, hydrator (filtr do hydratoru)                               
         $celeJmenoEntityHydrator = new CeleJmenoEntityHydrator( new AttributeNameHydratorMock(), new MethodNameHydratorMock(),
-                                                                new OneToManyFilterMock( $this->seznamJmen), 
+                                                                new OneToManyFilterMock( $this->poleJmen), 
                                                                 new CeleJmenoGluerMock () ) ;
         
         // 4 -  hydratovani  ############################################
@@ -199,7 +202,7 @@ class CeleJmenoEntityHydratorTest extends TestCase {
         
         
         // 5 - kontrola hydratace           
-        foreach (  $this->seznamJmen as  $key => $value ) { /* $key je pro vytvoreni metody entity, $value je pole  vlastnosti rowobjectu!!!!!*/      
+        foreach (  $this->poleJmen as  $key => $value ) { /* $key je pro vytvoreni metody entity, $value je pole  vlastnosti rowobjectu!!!!!*/      
             $i = 0;
             $listArray = [];
             foreach ($value as $item) {              
@@ -219,8 +222,8 @@ class CeleJmenoEntityHydratorTest extends TestCase {
     
     
     public function testCeleJmenoEntityExtract() : void {
-        $this->seznamJmen = [           
-            "celeJmeno" =>  [ "prijmeni", "jmeno"],     //pro    filter ,  pozadovane poradi 
+        $this->poleJmen = [           
+            "celeJmeno" =>       [ "prijmeni", "jmeno"],     //pro    filter ,  pozadovane poradi 
             "celeJmenoDruhe" =>  [ "prijmeni2", "jmeno2"]
             ];
         
@@ -236,7 +239,7 @@ class CeleJmenoEntityHydratorTest extends TestCase {
                                   
         // 3 - filtr, nastaveni filtru, hydrator (filtr do hydratoru)                                               
         $oneToOneEntityHydrator = new CeleJmenoEntityHydrator( new AttributeNameHydratorMock(), new MethodNameHydratorMock(),
-                                                               new OneToManyFilterMock( $this->seznamJmen ),
+                                                               new OneToManyFilterMock( $this->poleJmen ),
                                                                new CeleJmenoGluerMock () ) ;
         
         // 4 -  extrakce  ##########################################
@@ -249,7 +252,7 @@ class CeleJmenoEntityHydratorTest extends TestCase {
         
         // 5 - kontrola extrakce  ( ocekavany: Entita,  kontrolovany: rowObject)
         //pozn. foreach jde podle "vlastniho" poradi
-        foreach (  $this->seznamJmen as  $key => $value ) { /* $key je pro vytvoreni metody entity, $value  je pole se jmeny vlastnosti rowobjectu!!!!!*/      
+        foreach (  $this->poleJmen as  $key => $value ) { /* $key je pro vytvoreni metody entity, $value  je pole se jmeny vlastnosti rowobjectu!!!!!*/      
             $i = 0;
             $listArray = [];
             foreach ($value as $item) {              

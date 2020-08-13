@@ -209,7 +209,7 @@ class OneToOneEntityHydratorTest extends TestCase {
     private $testDateTimeString;
     private $testDateTime;
  
-    private $seznamJmen  ;
+    private $poleJmen  ;
        
     /**
      * Před každým testem.
@@ -222,7 +222,7 @@ class OneToOneEntityHydratorTest extends TestCase {
         $this->testDateTimeString = "2005-06-07 22:23:24";
         $this->testDateTime = DateTime::createFromFormat("Y-m-d H:i:s", $this->testDateTimeString);           
         
-        $this->seznamJmen =  [ 
+        $this->poleJmen =  [ 
                         "prvekVarchar" ,  "prvekChar" ,  "prvekText" , "prvekInteger" ,  "prvekBoolean" , 
                         "prvekDate", "prvekDatetime", "prvekTimestamp" 
                               ] ;   
@@ -249,7 +249,7 @@ class OneToOneEntityHydratorTest extends TestCase {
                      
         // 3 - filtr, name hydrator, -> vytvoření hydratoru       
         $oneToOneEntityHydrator = new OneToOneEntityHydrator( new MethodNameHydrator_forOOHT(),
-                                                              new OneToOneFilterMock_forOOHT( $this->seznamJmen) );      
+                                                              new OneToOneFilterMock_forOOHT( $this->poleJmen) );      
                 
         // 4 -  hydratovani
         $identity = new IdentityMock_forOOHT(  );
@@ -257,7 +257,7 @@ class OneToOneEntityHydratorTest extends TestCase {
         $oneToOneEntityHydrator->hydrate( $novaPlnenaTestovaciEntity, $testovaciZdrojovyRowObjectNaplneny );                
                 
         // 5 - kontrola hydratace           
-        foreach (  $this->seznamJmen as  $value )  /* $value  je vlastnost rowobjectu!!!!!*/    {             
+        foreach (  $this->poleJmen as  $value )  /* $value  je vlastnost rowobjectu!!!!!*/    {             
             // assertEquals (ocekavana, aktualni hodnota v entite)               
             $getMethodName = "get" .  ucfirst( $value );
             $this->assertEquals( $testovaciZdrojovyRowObjectNaplneny->$value, 
@@ -285,14 +285,14 @@ class OneToOneEntityHydratorTest extends TestCase {
                   
         // 3 - filtr, nastaveni filtru, hydrator (filtr do hydratoru)                                               
         $oneToOneEntityHydrator = new OneToOneEntityHydrator( new MethodNameHydrator_forOOHT(),
-                                                              new OneToOneFilterMock_forOOHT( $this->seznamJmen) );       //vlastnosti rowobjectu!!!!! 
+                                                              new OneToOneFilterMock_forOOHT( $this->poleJmen) );       //vlastnosti rowobjectu!!!!! 
         
         // 4 -  extrakce
         $novyPlnenyRowObject  =  new RowObjectMock_forOOHT ();           
         $oneToOneEntityHydrator->extract( $testovaciZdrojovaEntityNaplnena, $novyPlnenyRowObject );        
                 
         // 5 - kontrola extrakce     
-        foreach (  $this->seznamJmen as  $value )  /* $value je vlastnost rowobjectu!!!!!*/ {                     
+        foreach (  $this->poleJmen as  $value )  /* $value je vlastnost rowobjectu!!!!!*/ {                     
             $getMethodName = "get" .  ucfirst( $value );     
             // assertEquals (ocekavana, aktualni hodnota v row objektu)   
             $this->assertEquals( $testovaciZdrojovaEntityNaplnena->$getMethodName(),  /*zde nejak jinak   ?????   */

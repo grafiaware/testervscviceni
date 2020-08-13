@@ -8,18 +8,19 @@ use Model\Entity\Hydrator\CeleJmenoGluerInterface;
  */
 class CeleJmenoGluer implements CeleJmenoGluerInterface {
     /**
-     * @param array $castiJmena     asoc pole,  jmeno vlastnosti rowObjectu => hodnota vlastnosti rowObjectu  
+     * @param array $castiJmenaZRowObjectu  asoc. pole,  jmeno vlastnosti rowObjectu => hodnota vlastnosti rowObjectu  
      * @param array $listJmen       seznam casti jmena, urcuje tez poradi casti ( array ['jmeno', 'prijmeni' ] ) 
      * @return string               spojene celé jmeno
      */
-    public function stick(  array $castiJmena,  array $listJmen) : string {                
-        $castiJmenaSerazenePodleFiltru = [];
+    public function stick(  array $castiJmenaZRowObjectu,  array $listJmen) : string {                
+        $castiJmenaSerazenePodlePoradiVListJmen = [];
         foreach ( $listJmen as  $v) {            
-            $castiJmenaSerazenePodleFiltru[] = $castiJmena[$v];            
+            $castiJmenaSerazenePodlePoradiVListJmen[] = $castiJmenaZRowObjectu[$v];            
         }            
-        $celeJmeno = implode("|", $castiJmenaSerazenePodleFiltru);
+        $celeJmeno = implode("|", $castiJmenaSerazenePodlePoradiVListJmen);
         return $celeJmeno;       
     }
+    
     /**
      * 
      * @param string $celeJmeno vstupujici retezec ( spojene části jména s oddelovacem '|')

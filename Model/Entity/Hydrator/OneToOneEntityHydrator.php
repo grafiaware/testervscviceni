@@ -21,7 +21,7 @@ class OneToOneEntityHydrator implements EntityHydratorInterface {
     private $methodNameHydrator;
     
     /**
-     * Filtr obsahuje seznam jmen  vlastností row objektu k hydrataci/extrakci.
+     * Filtr obsahuje seznam jmen (pole jmen)  vlastností row objektu k hydrataci/extrakci.
      * 
      * @var  OneToOneFilterInterface    -  extends \IteratorAggregate
      */

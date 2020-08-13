@@ -7,8 +7,7 @@ namespace Model\Entity\Hydrator;
  */
 interface CeleJmenoGluerInterface {
    
-//     public function stick(/*$jmeno, $prijmeni*/  array $items):   string ;                  
-//     public function unstick( string $celeJmeno):  array   ;
     public function stick( array $castiJmena,  array $listJmen):  string;       
+    
     public function unstick(  string $celeJmeno, array $listJmen ) : array; 
 }
