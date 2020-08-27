@@ -1,5 +1,5 @@
 <?php
-namespace Test\IdentityTest;
+namespace Test\TestovaciEntityTest;
 
 
 use PHPUnit\Framework\TestCase;
@@ -10,7 +10,7 @@ use Model\Entity\EntityAbstract;
 
 
 
-class IdentityMock_forTET implements IdentityInterface {
+class IdentityMock implements IdentityInterface {
     /**
      *
      * @var bool Klíč je generovaný.
@@ -66,7 +66,7 @@ class IdentityMock_forTET implements IdentityInterface {
 
 }
 
-interface TestovaciEntityInterfaceMock_forTET extends EntityInterface {    
+interface TestovaciEntityInterfaceMock extends EntityInterface {    
 
         public function getCeleJmeno();
         public function getPrvekVarchar();
@@ -77,17 +77,17 @@ interface TestovaciEntityInterfaceMock_forTET extends EntityInterface {
         public function getPrvekDatetime(): \DateTime;
         public function getPrvekTimestamp(): \DateTime;
         public function getPrvekBoolean();        
-        public function setCeleJmeno( string $celeJmeno) :TestovaciEntityInterfaceMock_forTET;
-        public function setPrvekVarchar($prvekVarchar) :TestovaciEntityInterfaceMock_forTET;
-        public function setPrvekChar($prvekChar) :TestovaciEntityInterfaceMock_forTET;
-        public function setPrvekText($prvekText) :TestovaciEntityInterfaceMock_forTET;
-        public function setPrvekInteger($prvekInteger) :TestovaciEntityInterfaceMock_forTET;
-        public function setPrvekDate(\DateTime $prvekDate) :TestovaciEntityInterfaceMock_forTET;
-        public function setPrvekDatetime(\DateTime $prvekDatetime) :TestovaciEntityInterfaceMock_forTET;
-        public function setPrvekTimestamp(\DateTime $prvekTimestamp) :TestovaciEntityInterfaceMock_forTET;
-        public function setPrvekBoolean($prvekBoolean) :TestovaciEntityInterfaceMock_forTET;        
+        public function setCeleJmeno( string $celeJmeno) :TestovaciEntityInterfaceMock;
+        public function setPrvekVarchar($prvekVarchar) :TestovaciEntityInterfaceMock;
+        public function setPrvekChar($prvekChar) :TestovaciEntityInterfaceMock;
+        public function setPrvekText($prvekText) :TestovaciEntityInterfaceMock;
+        public function setPrvekInteger($prvekInteger) :TestovaciEntityInterfaceMock;
+        public function setPrvekDate(\DateTime $prvekDate) :TestovaciEntityInterfaceMock;
+        public function setPrvekDatetime(\DateTime $prvekDatetime) :TestovaciEntityInterfaceMock;
+        public function setPrvekTimestamp(\DateTime $prvekTimestamp) :TestovaciEntityInterfaceMock;
+        public function setPrvekBoolean($prvekBoolean) :TestovaciEntityInterfaceMock;        
 }
-class TestovaciEntityMock_forTET  extends EntityAbstract implements TestovaciEntityInterfaceMock_forTET {         
+class TestovaciEntityMock extends EntityAbstract implements TestovaciEntityInterfaceMock {      
         /**
          *
          * @var string
@@ -154,48 +154,48 @@ class TestovaciEntityMock_forTET  extends EntityAbstract implements TestovaciEnt
         }        
         //-----------------------------------
 
-        public function setCeleJmeno( string $celeJmeno) : TestovaciEntityInterfaceMock_forTET {
+        public function setCeleJmeno( string $celeJmeno) : TestovaciEntityInterfaceMock {
            $this->celeJmeno = $celeJmeno;
            return $this;
         }
 
-        public function setPrvekVarchar($prvekVarchar) :TestovaciEntityInterfaceMock_forTET {
+        public function setPrvekVarchar($prvekVarchar) :TestovaciEntityInterfaceMock {
             $this->prvekVarchar = $prvekVarchar;       
             return $this;        
         }
 
-        public function setPrvekChar($prvekChar) :TestovaciEntityInterfaceMock_forTET {
+        public function setPrvekChar($prvekChar) :TestovaciEntityInterfaceMock {
             $this->prvekChar = $prvekChar;
             return $this;
 
         }
 
-        public function setPrvekText($prvekText) :TestovaciEntityInterfaceMock_forTET {
+        public function setPrvekText($prvekText) :TestovaciEntityInterfaceMock {
             $this->prvekText = $prvekText;
             return $this;        
         }
 
-        public function setPrvekInteger($prvekInteger) :TestovaciEntityInterfaceMock_forTET{
+        public function setPrvekInteger($prvekInteger) :TestovaciEntityInterfaceMock {
             $this->prvekInteger = $prvekInteger;
             return $this;       
         }
 
-        public function setPrvekDate(\DateTime $prvekDate) :TestovaciEntityInterfaceMock_forTET{
+        public function setPrvekDate(\DateTime $prvekDate) :TestovaciEntityInterfaceMock {
             $this->prvekDate = $prvekDate;
             return $this;        
         }
 
-        public function setPrvekDatetime(\DateTime $prvekDatetime) :TestovaciEntityInterfaceMock_forTET {
+        public function setPrvekDatetime(\DateTime $prvekDatetime) :TestovaciEntityInterfaceMock {
             $this->prvekDatetime = $prvekDatetime;
             return $this;        
         }
 
-        public function setPrvekTimestamp(\DateTime $prvekTimestamp) :TestovaciEntityInterfaceMock_forTET {
+        public function setPrvekTimestamp(\DateTime $prvekTimestamp) :TestovaciEntityInterfaceMock {
             $this->prvekTimestamp = $prvekTimestamp;
             return $this;      
         }
 
-        public function setPrvekBoolean($prvekBoolean) :TestovaciEntityInterfaceMock_forTET{
+        public function setPrvekBoolean($prvekBoolean) :TestovaciEntityInterfaceMock {
             $this->prvekBoolean = $prvekBoolean;
             return $this;
         }
@@ -222,17 +222,17 @@ class TestovaciEntityTest extends TestCase {
     public function setUp(): void {
         $this->testovaciKeyHash   = [ 'Klic1' => 'aa', 'Klic2' => 'bb'  ];
         $this->testovaciAttribute = [ 'Klic1' ,'Klic2'  ];               
-        $this->identity = new IdentityMock_forTET( $this->testovaciAttribute); //neni generovany klic    
+        $this->identity = new IdentityMock ( $this->testovaciAttribute); //neni generovany klic    
     }
     
     
     public function testConstruct(  ) : void {                          
-        $this->assertInstanceOf( TestovaciEntityMock_forTET::class, new TestovaciEntityMock_forTET( $this->identity ));                
+        $this->assertInstanceOf( TestovaciEntityMock::class, new TestovaciEntityMock ( $this->identity ));                
     }
     
     
     public function testGetIdentity() {
-        $entity = new TestovaciEntityMock_forTET( $this->identity );       
+        $entity = new TestovaciEntityMock ( $this->identity );       
         $this->assertInstanceOf(IdentityInterface::class, $entity->getIdentity());        
     }
     

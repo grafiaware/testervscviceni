@@ -1,5 +1,5 @@
 <?php
-namespace Model\Dao;
+//namespace Model\Dao;
 
 use Model\RowObject\OdpovedNaOtazkuRow;
 use Model\RowObject\RowObjectInterface;

@@ -202,20 +202,36 @@ class CeleJmenoEntityHydratorTest extends TestCase {
         
         
         // 5 - kontrola hydratace           
-        foreach (  $this->poleJmen as  $key => $value ) { /* $key je pro vytvoreni metody entity, $value je pole  vlastnosti rowobjectu!!!!!*/      
+        $oneToManyFilterMock = new OneToManyFilterMock( $this->poleJmen );
+        foreach (  $oneToManyFilterMock->getIterator() as  $key => $value  ) { /* $key je pro vytvoreni metody entity, $value je pole  vlastnosti rowobjectu!!!!!*/      
             $i = 0;
             $listArray = [];
             foreach ($value as $item) {              
                 $listArray [$i] =  $testovaciZdrojovyRowObjectNaplneny->$item;
                 $i = $i + 1;                               
             }                               
-            $getMethodName = "get" .  ucfirst( $key ); 
+            $methodNameHydrator = new MethodNameHydratorMock();
+            $methodNameGet = $methodNameHydrator->extract( $key );
+            //$getMethodName = "get" .  ucfirst( $key ); 
+            //
             // assertEquals (ocekavana, aktualni hodnota v entite)                
-            $this->assertEquals( implode("|", $listArray), $novaPlnenaTestovaciEntity->$getMethodName(),
+            $this->assertEquals( implode("|", $listArray), $novaPlnenaTestovaciEntity->$methodNameGet(),
                                 " *CHYBA* ");                  
         }   
-        
+         
+//              "celeJmeno" =>  ["prijmeni", "jmeno" ],
+//              "celeJmenoDruhe" => ["prijmeni2", "jmeno2"]
+        $gluer = new CeleJmenoGluerMock();
+        $this->assertEquals($gluer->stick(  [  "prijmeni" => $testovaciZdrojovyRowObjectNaplneny->prijmeni, 
+                                               "jmeno" => $testovaciZdrojovyRowObjectNaplneny->jmeno ],  ["prijmeni", "jmeno" ]), 
+                            $novaPlnenaTestovaciEntity->getCeleJmeno(), 
+                            " *CHYBA*při hydrataci ");
        
+        $this->assertEquals($gluer->stick( [ "prijmeni2" => $testovaciZdrojovyRowObjectNaplneny->prijmeni2 , 
+                                              "jmeno2" => $testovaciZdrojovyRowObjectNaplneny->jmeno2  ], ["prijmeni2", "jmeno2" ] ),               
+                            $novaPlnenaTestovaciEntity->getCeleJmenoDruhe(), 
+                            " *CHYBA*při hydrataci ");       
+                
     }
     
     
@@ -252,20 +268,37 @@ class CeleJmenoEntityHydratorTest extends TestCase {
         
         // 5 - kontrola extrakce  ( ocekavany: Entita,  kontrolovany: rowObject)
         //pozn. foreach jde podle "vlastniho" poradi
-        foreach (  $this->poleJmen as  $key => $value ) { /* $key je pro vytvoreni metody entity, $value  je pole se jmeny vlastnosti rowobjectu!!!!!*/      
+        $oneToManyFilterMock = new OneToManyFilterMock( $this->poleJmen );
+        foreach (  $oneToManyFilterMock->getIterator()  as  $key => $value ) { /* $key je pro vytvoreni metody entity, $value  je pole se jmeny vlastnosti rowobjectu!!!!!*/                  
             $i = 0;
             $listArray = [];
             foreach ($value as $item) {              
                 $listArray [$i] =  $novyPlnenyRowObject->$item;
                 $i = $i + 1;                               
             }                                 
-            $getMethodName = "get" .  ucfirst( $key );        
+            
+            $methodNameHydrator = new MethodNameHydratorMock();
+            $methodNameGet = $methodNameHydrator->extract( $key );
+            //$getMethodName = "get" .  ucfirst( $key );        
+            //
             // assertEquals (ocekavana, aktualni hodnota v entite)                
-            $this->assertEquals( $testovaciZdrojovaEntityNaplnena->$getMethodName(), implode("|", $listArray), /*z rowObjectu*/
+            $this->assertEquals( $testovaciZdrojovaEntityNaplnena->$methodNameGet(), implode("|", $listArray), /*z rowObjectu*/
                                  " *CHYBA* ");                  
         }   
         
-      
+//       "celeJmeno" =>  ["prijmeni", "jmeno" ],
+//       "celeJmenoDruhe" => ["prijmeni2", "jmeno2"]    
+        $gluer = new CeleJmenoGluerMock ();
+        $this->assertEquals( $testovaciZdrojovaEntityNaplnena->getCeleJmeno(), 
+                             $gluer->stick( [ "prijmeni" => $novyPlnenyRowObject->prijmeni, "jmeno" => $novyPlnenyRowObject->jmeno ], 
+                                            ["prijmeni", "jmeno" ] ),               
+                             " *CHYBA*při extrahování ");
+        
+        $this->assertEquals( $testovaciZdrojovaEntityNaplnena->getCeleJmenoDruhe(),
+                             $gluer->stick( [ "prijmeni2" => $novyPlnenyRowObject->prijmeni2, "jmeno2" => $novyPlnenyRowObject->jmeno2 ],
+                                            ["prijmeni2", "jmeno2" ] ),
+                             " *CHYBA*ři extrahování ");
+        
      
     }
         

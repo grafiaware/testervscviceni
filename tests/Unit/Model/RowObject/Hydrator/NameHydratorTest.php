@@ -1,5 +1,5 @@
 <?php
-namespace Test\NameHydratorTest;
+namespace Test\RO_NameHydratorTest;
 
 use PHPUnit\Framework\TestCase;
 
