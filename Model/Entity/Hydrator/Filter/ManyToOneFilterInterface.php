@@ -14,7 +14,7 @@ interface ManyToOneFilterInterface  extends \IteratorAggregate {
     //getIterator vrací iterovatelný objekt.    
     
     /**    
-     * Vrací jména, která budou použita k nastavování/extrahování.
+     * Vrací jména, která budou použita k hydratovani/extrahování.
      * @return \Traversable
      */
     public function getIterator() : \Traversable;

@@ -2,34 +2,36 @@
 namespace Model\RowObject\Hydrator;
 
 use Model\RowObject\RowObjectInterface;
+use Model\RowData\RowDataInterface;
 
 /**
  *
  * @author vlse2610
  */
 interface RowObjectHydratorInterface {
-
+    
     /**
-     * Extrahuje hodnoty z $rowObject do pole $row.
-     * 
-     * @param RowObjectInterface $rowObject
-     * @param string $row array of
-     * @return void
-     * @throws Exception\UndefinedColumnNameException
-     */
-    public function extract( RowObjectInterface $rowObject, &$row): void;
-    //&, tj. predani odkazem - aby byl ve volacim skriptu pristupny 
-    //objekt je vzdy predavan odkazem
-    
-    
-     /**
-     * Hydratuje $rowObject hodnotami z pole $row. 
+     * Hydratuje $rowObject hodnotami z objektu $rowData. 
      * Pozadovany typ zjišťuje z tabulky db.
      * 
      * @param RowObjectInterface $rowObject
-     * @param string $row array of
+     * @param RowDataInterface $rowData 
      * @return void
      */
-    public function hydrate( RowObjectInterface $rowObject, &$row): void;  
+    public function hydrate( RowObjectInterface $rowObject,  RowDataInterface $rowData  ): void;      
+    
+
+    /**
+     * Extrahuje hodnoty z $rowObject do objektu $rowData.     
+     * 
+     * @param RowObjectInterface $rowObject
+     * @param RowDataInterface $rowData 
+     * @throws Exception\UndefinedColumnNameException     
+     * @return void     
+     */
+    public function extract( RowObjectInterface $rowObject, RowDataInterface $rowData ): void;   
+    
+    
+   
    
 }

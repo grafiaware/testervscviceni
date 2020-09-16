@@ -2,7 +2,11 @@
 namespace Model\RowObject\Hydrator;
 
 use Model\RowObject\RowObjectInterface;
-use Model\RowObject\Hydrator\NameHydratorInterface;
+
+use Model\RowObject\Hydrator\NameHydrator\AttributeNameHydratorInterface;
+use Model\RowObject\Hydrator\RowObjectHydratorInterface;
+use Model\RowObject\Hydrator\Filter\ColumnFilterInterface;
+use Model\RowData\RowDataInterface;
 
 use Pes\Database\Metadata\ColumnMetadataInterface;
 use Pes\Database\Metadata\TableMetadataInterface;
@@ -18,63 +22,78 @@ class RowObjectHydrator implements RowObjectHydratorInterface {
      * @var NameHydratorInterface
      */
     private $nameHydrator;
-
+           
     /**
      * @var TableMetadataInterface
      */
     private $tableMetadata;
     
     /**
+     *
+     * @var ColumnFilter 
+     */
+    private $columnFilter;
+    
+    /**
      * 
      * @param NameHydratorInterface $nameHydrator
      * @param TableMetadataInterface $tableMetadata
+     * 
+     * 
      */
-    public function __construct(NameHydratorInterface $nameHydrator, TableMetadataInterface $tableMetadata) {
+    public function __construct( AttributeNameHydratorInterface $nameHydrator, TableMetadataInterface $tableMetadata , 
+                                 ColumnFilterInterface $columnFilter ) {
         $this->nameHydrator = $nameHydrator;
         $this->tableMetadata = $tableMetadata;
+        $this->columnFilter = $columnFilter;
     }
     
-    
+    //TODO taky potebujeme vyresit readonly,   
     
      /**
-     * Hydratuje $rowObject hodnotami z pole sloupcu $row (směr do skriptu z úložiště).
-     * - cyklus pres vsechny vlastnosti objektu $rowObject. Pozadovany typ zjišťuje z tabulky db.
-     * (Ridime se vlastnostmi objektu, neex-li sloupec, tj. nejde "precist" - hlasit. Sloupec navic v db $row nam nevadi.)
+     * Hydratuje $rowObject hodnotami z objektu $rowData  (směr do skriptu z úložiště).
+     * - cyklus pres  jmena vlastnosti $rowObject - bere z filtru. Pozadovany typ zjišťuje z tabulky db.
+     * (Ridime se vlastnostmi objektu $rowObject, neex-li sloupec, tj. nejde "precist" - hlasit. Sloupec navic v db ($rowData) nam nevadi.)
      * 
      * @param RowObjectInterface $rowObject
-     * @param string $row array of
+     * @param RowDataInterface $rowData
      * @return void
      * @throws Exception\UnknownPropertyNameException
      * @throws Exception\DatetimeConversionFailureException
      */
-    public function hydrate( RowObjectInterface $rowObject, &$row): void {  //&row(predani odkazem)   &-zde neni uplne nutne, cilem je vracet rowObject (objekt se predava automat.vzdy odkazem)
-        //$properties = get_object_vars($rowObject);  // pole s vlastnostmi viditelnymi objektu
-                   
-        foreach ($rowObject as $propertyName=>$propertyValue) {  
-            /*-nemusi byt explicitni -*/        $jmSloupce = $this->nameHydrator->extract($propertyName);
+    public function hydrate( RowObjectInterface $rowObject,  RowDataInterface $rowData  ): void {        
+                            //$properties = get_object_vars($rowObject);  // pole s vlastnostmi viditelnymi objektu              
+        // filtr obsahuje jmena podle jmen vlastnosti rowObjektu  
+        // row data obsahuje jmena s podtrzitky
+        
+        foreach ( $this->columnFilter->getIterator() as $properName ) {  //dle zadaneho filtru ...
+        //    /*-nemusi byt explicitni - proto se pouzije nameHydrator */        
+            $jmenoSloupce = $this->nameHydrator->hydrate($properName);       //  $propertyName je pro rowObject               
+            
             /* @var $columnMetadata ColumnMetadataInterface  */
-            $columnMetadata = $this->tableMetadata->getColumnMetadata($jmSloupce); // nemam sloupec v db           
-            if ( !$columnMetadata) {
-                throw new Exception\UndefinedColumnNameException("Neznámé (neex.) jméno sloupce $jmSloupce." );
-            }        
- 
-            $columnType = $columnMetadata->getType();            
-            /*-nemusi byt explicitni zde -*/     $hodnotaSl = $row[ $jmSloupce ] ;                          
-          
-            if (!isset( $row[ $jmSloupce ] )) {    
-                $rowObject->$propertyName = NULL;
+            $columnMetadata = $this->tableMetadata->getColumnMetadata( $jmenoSloupce );   
+            if ( !$columnMetadata) {   // nemam sloupec v db 
+                throw new Exception\UndefinedColumnNameException("Neznámé (neex.)jméno sloupce $properName." );
+            }         
+            $columnType = $columnMetadata->getType();                                                                                                      
+            
+            if (!isset( $rowData[ $jmenoSloupce ] )) {    // ev. zde pouzit objekt convertor  - jmeno sl., typ=v metadata, hodnota
+                $rowObject->$properName = NULL;
+                
             } elseif ( $columnType == 'datetime' OR $columnType == 'timestamp') {
-                $dat = \DateTime::createFromFormat("Y-m-d H:i:s",  $row[ $jmSloupce ] );
-                if (!$dat) { throw new Exception\DatetimeConversionFailureException("Hodnota typu datetime ze sloupce $jmSloupce se nezkonvertovala." .
-                             "do vlastnosti $propertyName rowObjektu.");  }                
-                $rowObject->$propertyName = $dat ;
+                $dat = \DateTime::createFromFormat("Y-m-d H:i:s",  $rowData[ $jmenoSloupce ] );   //vyrabim objekt DateTime
+                if (!$dat) { throw new Exception\DatetimeConversionFailureException("Hodnota typu datetime ze sloupce $properName se nezkonvertovala." .
+                             "do vlastnosti $jmenoSloupce rowObjektu.");  }                
+                $rowObject->$properName = $dat ;
+                
             } elseif ( $columnType == 'date') {
-                $dat = \DateTime::createFromFormat("Y-m-d",  $row[ $jmSloupce ] );                
-                if (!$dat) { throw new Exception\DatetimeConversionFailureException("Hodnota typu date ze sloupce $jmSloupce se nezkonvertovala.");  }                
+                $dat = \DateTime::createFromFormat("Y-m-d",  $rowData[ $jmenoSloupce ] );        //vyrabim objekt DateTime        
+                if (!$dat) { throw new Exception\DatetimeConversionFailureException("Hodnota typu date ze sloupce $properName se nezkonvertovala.");  }                
                 $dat->setTime(0, 0, 0, 0);
-                $rowObject->$propertyName = $dat ;
+                $rowObject->$properName = $dat ;
+                
             } else {
-                $rowObject->$propertyName =  $row[ $jmSloupce ] ;
+                $rowObject->$properName =  $rowData[ $jmenoSloupce ] ;
             }
                               
         }
@@ -85,49 +104,54 @@ class RowObjectHydrator implements RowObjectHydratorInterface {
     
 
     /**
-     * Extrahuje hodnoty z $rowObject do pole sloupcu $row. (směr do uložiště)
+     * Extrahuje hodnoty z $rowObject do objektu $rowData . (směr do uložiště)
      * - cyklus pres vsechny vlastnosti objektu $rowObject. Pozadovany typ zjišťuje z tabulky db.
-     * (Ridime se vlastnostmi objektu, neex-li sloupec, tj. nejde "zapsat" - hlasit. Sloupce navic v db $row nevadi - nezjistujeme je.)
+     * (Ridime se vlastnostmi objektu $rowObject, neex-li sloupec, tj. nejde "zapsat" - hlasit. Sloupce navic v db $row nevadi - nezjistujeme je.)
      * 
      * @param RowObjectInterface $rowObject
-     * @param string $row array of
+     * @param RowDataInterface $rowData 
      * @return void
      * @throws Exception\UndefinedColumnNameException
      * @throws Exception\DatetimeConversionFailureException
      */    
-    public function extract( RowObjectInterface $rowObject, &$row): void {      // &$row - zde je cilem vracet $row
-        //&, tj. predani odkazem - aby byl ve volacim skriptu pristupny 
-        //pozn. objekt je vzdy predavan odkazem
-        foreach ($rowObject as $propertyName=>$propertyValue) {
-            $columnName = $this->nameHydrator->extract($propertyName);
+    public function extract( RowObjectInterface $rowObject, RowDataInterface $rowData ): void   { // zde je cilem vracet $rowData         
+        // filtr obsahuje jmena podle jmen vlastnosti rowObjektu  
+        // row data obsahuje jmena s podtrzitky
+        
+        foreach ( $this->columnFilter->getIterator() as $propertyNameROData ) { 
+           $columnName = $this->nameHydrator->extract( $propertyNameROData );          
+           
             /* @var $columnMetadata ColumnMetadataInterface  */
-            $columnMetadata = $this->tableMetadata->getColumnMetadata($columnName);
+            $columnMetadata = $this->tableMetadata->getColumnMetadata( $columnName );
             if ( !$columnMetadata) {
-                throw new Exception\UndefinedColumnNameException("Název sloupce $columnName  není v tabulce {$this->tableMetadata->getTableName()}."
-                . " {Název sloupce byl vyroben nameHydratorem z jména vlastnosti $propertyName rowObjektu " . get_class($rowObject) ."}");
+//                throw new Exception\UndefinedColumnNameException("Název sloupce $columnName $jmSloupce  není v tabulce {$this->tableMetadata->getTableName()}."
+//                . " {Název sloupce byl vyroben nameHydratorem z jména vlastnosti $propertyName rowObjektu " . get_class($rowObject) ."}");
+                throw new Exception\UndefinedColumnNameException("Název sloupce  $columnName  není v tabulce {$this->tableMetadata->getTableName()}." );
             }
             $columnType = $columnMetadata->getType();
-            $propertyValue = $rowObject->$propertyName;  //hodnota z objektu
-            if (!isset($propertyValue)) {   //tady se resi null
-                    $row[$columnName] = NULL;
+           
+            $PropertyROValue = $rowObject->$propertyNameROData;  //hodnota z rowObjektu
+            if (!isset($PropertyROValue)) {   //tady se resi null
+                    $rowData[$columnName] = NULL;
+                    
             } elseif($columnType == 'datetime' OR $columnType=='timestamp') {
-                if ($propertyValue instanceof \DateTime) {
-                    $row[$columnName] = $propertyValue->format("Y-m-d H:i:s");
+                if ($PropertyROValue instanceof \DateTime) {
+                    $rowData[$columnName] = $PropertyROValue->format("Y-m-d H:i:s");
                 } else {
                     throw new Exception\DatetimeConversionFailureException(
-                         "Typ sloupce $columnName je datetime a hodnota vlastnosti " . get_class($rowObject) . "->$propertyName" .
+                         "Typ sloupce $columnName je datetime a hodnota vlastnosti " . get_class($rowObject) . "->$columnName" .
                          " není instancí objektu \DateTime.");                      
                 }
             } elseif ($columnType=='date') {
-                if ($propertyValue instanceof \DateTime) {
-                    $row[$columnName] = $propertyValue->format("Y-m-d"); //H:i:s netreba, potrebuji jen string obsahujici datum
+                if ($PropertyROValue instanceof \DateTime) {
+                    $rowData[$columnName] = $PropertyROValue->format("Y-m-d"); //H:i:s netreba, potrebuji jen string obsahujici datum
                 } else {
                     throw new Exception\DatetimeConversionFailureException(
-                         "Typ sloupce $columnName je date a hodnota vlastnosti " . get_class($rowObject) . "->$propertyName" .
+                         "Typ sloupce $columnName je date a hodnota vlastnosti " . get_class($rowObject) . "->$columnName" .
                          " není instancí objektu \DateTime.");                      
                 }
             } else {
-                $row[$columnName] = $propertyValue;
+                $rowData[ $columnName ] = $PropertyROValue;
             }
         }
     }
