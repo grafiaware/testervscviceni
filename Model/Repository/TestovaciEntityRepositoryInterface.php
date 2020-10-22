@@ -5,6 +5,7 @@ use Model\Entity\EntityInterface;
 use \Model\Entity\Identity\IdentityInterface;
 
 
+//-------------------------------------------------------------------------------
 /**
  *
  * @author vlse2610
@@ -28,8 +29,8 @@ interface TestovaciEntityRepositoryInterface {
     
     /**
      * 
-     * @param IdentityInterface $identity
+     * @param EntityInterface $entity 
      * @return void
      */
-    public function remove( IdentityInterface $identity ): void;
+    public function remove( EntityInterface $entity  ): void;
 }

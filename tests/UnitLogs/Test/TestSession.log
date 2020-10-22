@@ -1,4 +1,4 @@
-[info] [2020-09-16 16:59:29] Logger start. Log file: D:\ApacheRoot\TesterVScviceni\tests\UnitLogs/Test/TestSession.log. Mode 'w+'.
+[info] [2020-09-29 15:55:00] Logger start. Log file: D:\ApacheRoot\TesterVScviceni\tests\UnitLogs/Test/TestSession.log. Mode 'w+'.
 [debug] Pes\Database\Handler\DsnProvider\DsnProviderMysql Vytvořeno dsn: mysql:host=localhost;dbname=tester_3_test
 [debug] Pes\Database\Handler\OptionsProvider\OptionsProviderMysql: Vytvořeny options - Array
     (

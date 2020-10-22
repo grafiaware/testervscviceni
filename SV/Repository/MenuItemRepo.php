@@ -73,12 +73,12 @@ class MenuItemRepo extends RepoAbstract implements MenuItemRepoInterface {
 
     public function add(MenuItemInterface $menuItem) {
         $index = $this->indexFromEntity($menuItem);
-        $this->collection[$index] = $menuItem;
+        $this->addEntity($entity);
     }
 
     public function remove(MenuItemInterface $menuItem) {
-        $this->removed[] = $menuItem;
-        unset($this->collection[$this->indexFromEntity($menuItem)]);
+        $index = $this->indexFromEntity($paper);
+        $this->removeEntity($entity, $index);
     }
 
     protected function createEntity() {

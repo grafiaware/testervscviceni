@@ -24,7 +24,8 @@ use Model\Entity\Identity\Hydrator\IdentityHydratorInterface;
  *
  * @author vlse2610
  */
-class TestovaciEntityRepository implements TestovaciEntityRepositoryInterface {    
+class TestovaciEntityRepository  extends RepoAbstract implements TestovaciEntityRepositoryInterface {                    
+    
     /**
      * @var TestovaciTableDaoInterface 
      */
@@ -53,70 +54,105 @@ class TestovaciEntityRepository implements TestovaciEntityRepositoryInterface {
     }
         
     
-       
-    /**
+    
+     /**
      * 
-     * @param type $identity
+     * @param IdentityInterface $identity
      * @return EntityInterface|null
      */
-    public function get( IdentityInterface $identity ): ?EntityInterface {     
-       
-        foreach ($this->entities as $entity) {
-            if ($entity->getIdentity()->isEqual($identity)) {
-                return $entity;
-            }
-        }
-        //nova entity
-        $entity = new TestovaciEntity( );
-        $entity->setIdentity($identity);
+    public function get ( IdentityInterface $identity ): ?EntityInterface {
         
-        /* ?? */$rowObject = $this->dao->get($identity->getKeyHash());     ///????????????????????????????identity
+    }
+    
+    /**
+     * 
+     * @param EntityInterface $entity
+     * @return void
+     */
+    public function add( EntityInterface $entity ): void {
         
-        $this->oneToOneEHydrator->hydrate($entity, $rowObject);
-        $this->celeJmenoEHydrator->hydrate($entity, $rowObject);
+    }
+    
+    
+    /**
+     * 
+     * @param EntityInterface $entity 
+     * @return void
+     */
+    public function remove( EntityInterface $entity  ): void {
         
-        $this->entities[] = $entity;
-        return $entity;
-     //---------------------------------------------------   
-//        /* @var $rowObject RowObjectInterface */   
-//       $rowObject = new RowObject (); 
-//       $this->dao->get(  $this->identityHydrator->extract( $identity, $rowObject ) );              
-//       if ($rowObject) {
-//           $identity2 = new Identity();
-//           $this->identityHydrator->hydrate( $identity2, $rowObject);
-//           
-//           /* @var $entity TestovaciEntityInterface */
-//           $entity = new TestovaciEntity;                               
-//           $this->celeJmenoEHydrator->hydrate($entity, $rowObject);
-//           $this->oneToOneEHydrator->hydrate($entity, $rowObject );           
-//       }
-//       else {          }
-//                     
-//       if  ( $identity->isEqual($identity2)) {           
-//       }
-//       else {           
-//       }     
-//       return $entity ;        
     }
     
     
     
-    public function add( EntityInterface $entity): void {
-        
-//        $rowObject = new TestovaciRowObject();
-//        $this->oneToOneEHydrator->extract($entity, $rowObject);
-//        $this->celeJmenoEHydrator->extract($entity, $rowObject);
+    
+    
+    
+//    
+////-------------------------------------------------------------------------------------------------       
+//    /**
+//     * 
+//     * @param type $identity
+//     * @return EntityInterface|null
+//     */
+//    public function get( IdentityInterface $identity ): ?EntityInterface {     
+//       
+//        foreach ($this->entities as $entity) {
+//            if ($entity->getIdentity()->isEqual($identity)) {
+//                return $entity;
+//            }
+//        }
+//        //nova entity
+//        $entity = new TestovaciEntity( );
+//        $entity->setIdentity($identity);
 //        
-//        $this->dao->save($rowObject);
-        
-    }
-    
-    
-    
-    public function remove( IdentityInterface  $identity): void {
-        
-        ;
-    }
+//        /* ?? */$rowObject = $this->dao->get($identity->getKeyHash());     ///????????????????????????????identity
+//        
+//        $this->oneToOneEHydrator->hydrate($entity, $rowObject);
+//        $this->celeJmenoEHydrator->hydrate($entity, $rowObject);
+//        
+//        $this->entities[] = $entity;
+//        return $entity;
+//     //---------------------------------------------------   
+////        /* @var $rowObject RowObjectInterface */   
+////       $rowObject = new RowObject (); 
+////       $this->dao->get(  $this->identityHydrator->extract( $identity, $rowObject ) );              
+////       if ($rowObject) {
+////           $identity2 = new Identity();
+////           $this->identityHydrator->hydrate( $identity2, $rowObject);
+////           
+////           /* @var $entity TestovaciEntityInterface */
+////           $entity = new TestovaciEntity;                               
+////           $this->celeJmenoEHydrator->hydrate($entity, $rowObject);
+////           $this->oneToOneEHydrator->hydrate($entity, $rowObject );           
+////       }
+////       else {          }
+////                     
+////       if  ( $identity->isEqual($identity2)) {           
+////       }
+////       else {           
+////       }     
+////       return $entity ;        
+//    }
+//    
+//    
+//    
+//    public function add( EntityInterface $entity): void {
+//        
+////        $rowObject = new TestovaciRowObject();
+////        $this->oneToOneEHydrator->extract($entity, $rowObject);
+////        $this->celeJmenoEHydrator->extract($entity, $rowObject);
+////        
+////        $this->dao->save($rowObject);
+//        
+//    }
+//    
+//    
+//    
+//    public function remove( EntityInterface $entity ): void {
+//        
+//        ;
+//    }
     
     
 }
