@@ -2,7 +2,7 @@
 namespace Model\Repository;
 
 use Model\Entity\EntityInterface;
-use \Model\Entity\Identity\IdentityInterface;
+use Model\Entity\Identity\IdentityInterface;
 
 
 //-------------------------------------------------------------------------------

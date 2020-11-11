@@ -1,5 +1,5 @@
 <?php
-namespace Model\RowObject\Hydrator;
+//namespace Model\RowObject\Hydrator;
 
 use Model\RowObject\RowObjectInterface;
 

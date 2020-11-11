@@ -2,8 +2,14 @@
 namespace Model\Repository;
 
 use Model\Dao\DaoInterface;
-use Model\Hydrator\HydratorInterface;
+
+use Model\Entity\Hydrator\EntityHydratorInterface;
 use Model\Entity\EntityInterface;
+
+use Model\RowObject\RowObjectInterface;
+use Model\RowObject\Hydrator\RowObjectHydratorInterface;
+
+use Model\RowData\RowDataInterface;
 
 use Model\Repository\Association\AssociationOneToOneFactory;
 use Model\Repository\Association\AssociationOneToManyFactory;
@@ -12,31 +18,34 @@ use Model\Repository\Exception\UnableRecreateEntityException;
 /**
  * Description of RepoAbstract
  *
- * @author pes2704
+ *
  */
-abstract class RepoAbstract implements RepoInterface {
+abstract class RepositoryAbstract implements RepositoryInterface {
 
     public static $counter;
     protected $count;
     protected $oid;
 
-    protected $collection = [];
+    protected $collection = [];  //persisted old
     protected $new = [];
     protected $removed = [];
 
     private $associations = [];
 
-    private $hydrators = [];
+    private $hydratorsEntity = [];
+    private $hydratorsRowObject = [];
 
+    
     /**
-     * @var DaoInterface
+     * @var TestovaciTableDaoInterface 
      */
     protected $dao;
+    
 
-    /**
-     * @var HydratorInterface array of
-     */
-    protected $hydrator;
+//    /**
+//     * @var HydratorInterface array of
+//     */
+//    protected $hydrator;
 
     /**
      *
@@ -58,42 +67,69 @@ abstract class RepoAbstract implements RepoInterface {
         }
     }
 
-    protected function registerHydrator(HydratorInterface $hydrator) {
-        $this->hydrators[] = $hydrator;
+    //---------------------------------------
+    protected function registerEHydrator( EntityHydratorInterface $hydrator ) {
+        $this->hydratorsEntity[] = $hydrator;
     }
-
-    protected function hydrate(EntityInterface $entity, &$row) {
-        /** @var HydratorInterface $hydrator */
-        foreach ($this->hydrators as $hydrator) {
-            $hydrator->hydrate($entity, $row);
+    protected function registerROHydrator( RowObjectHydratorInterface $hydrator ) {
+        $this->hydratorsRowObject[] = $hydrator;
+    }
+    //---------------------------------------
+    
+    
+    
+    protected function hydrate(EntityInterface $entity, RowDataInterface $rowData) {                
+        $rowObject = $this->createRowObject();
+        
+        /** @var RowObjectHydratorInterface $hydrator */
+        foreach ($this->hydratorsRowObject as $hydrator) {
+            $hydrator->hydrate( $rowObject, $rowData );
+        }
+        
+        /** @var EntityHydratorInterface $hydrator */
+        foreach ($this->hydratorsEntity as $hydrator) {
+            $hydrator->hydrate( $entity, $rowObject);
         }
     }
+    
 
-    protected function extract(EntityInterface $entity, &$row) {
-        /** @var HydratorInterface $hydrator */
-        foreach ($this->hydrators as $hydrator) {
-            $hydrator->extract($entity, $row);
+    protected function extract( EntityInterface $entity, RowDataInterface $rowData) {
+        $rowObject = $this->createRowObject();
+        
+        /** @var EntityHydratorInterface $hydrator */
+        foreach ($this->hydratorsEntity as $hydrator) {
+            $hydrator->extract($entity, $rowObject );
         }
+        
+        /** @var RowObjectHydratorInterface $hydrator */
+        foreach ($this->hydratorsRowObject as $hydrator) {
+            $hydrator->extract($rowObject, $rowData );
+        }
+           
     }
+    
+    
 
     /**
-     *
-     * @param array $row
-     * @return string index
+     *     
      */
-    protected function recreateEntity($index, $row): void {
-        if ($row) {
-            try {
-                $this->addCreatedAssociations($row);
-            } catch (UnableToCreateAssotiatedChildEntity $unex) {
-                throw new UnableRecreateEntityException("Nelze obnovit agregovanou entitu v repository ". get_called_class()." s indexem $index.", 0, $unex);
-            }
+    protected function recreateEntity( $index,  RowDataInterface $rowData): void {
+        if ($rowData) {
+//            try {
+//                $this->addCreatedAssociations($row);
+//            } catch (UnableToCreateAssotiatedChildEntity $unex) {
+//                throw new UnableRecreateEntityException("Nelze obnovit agregovanou entitu v repository ". get_called_class()." s indexem $index.", 0, $unex);
+//            }
+                                   
             $entity = $this->createEntity();  // definována v konkrétní třídě - adept na entity managera
-            $this->hydrate($entity, $row);
+            $this->hydrate($entity, $rowData);
+                                    
             $entity->setPersisted();
             $this->collection[$index] = $entity;
         }
     }
+    
+    
 
     protected function addEntity(EntityInterface $entity, $index=null): void {
         if ($index) {
@@ -106,6 +142,7 @@ abstract class RepoAbstract implements RepoInterface {
     protected function removeEntity(EntityInterface $entity, $index=null): void {
         if ($index) {
             $this->removed[] = $entity;
+            unset($this->collection[$index]);
         } else {   // smazání před uložením do db
             foreach ($this->new as $key => $new) {
                 if ($new === $entity) {
@@ -113,7 +150,7 @@ abstract class RepoAbstract implements RepoInterface {
                 }
             }
         }
-        unset($this->collection[$index]);
+       
     }
 
     public function flush(): void {

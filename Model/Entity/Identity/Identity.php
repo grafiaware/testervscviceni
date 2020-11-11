@@ -37,7 +37,7 @@ class Identity implements IdentityInterface, \Serializable {
      * @param array $attribute - pole názvů částí klíče
      * @param bool $isGeneratedKey - zda se jedná o klíč generovaný (nepovinný parametr)
      */    
-    public function __construct ( array $attribute, $isGeneratedKey=FALSE ) /*: IdentityInterface*/ {
+    public function __construct ( array $attribute, $isGeneratedKey=FALSE ) {
         $this->isGeneratedKey = (bool) $isGeneratedKey;
         $this->attribute = $attribute;
 //        $this->id = spl_object_hash($this);

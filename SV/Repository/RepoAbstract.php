@@ -116,6 +116,7 @@ abstract class RepoAbstract implements RepoInterface {
     protected function removeEntity(EntityInterface $entity, $index=null): void {
         if ($index) {
             $this->removed[] = $entity;
+            unset($this->collection[$index]);
         } else {   // smazání před uložením do db
             foreach ($this->new as $key => $new) {
                 if ($new === $entity) {
@@ -123,7 +124,6 @@ abstract class RepoAbstract implements RepoInterface {
                 }
             }
         }
-        unset($this->collection[$index]);
     }
 
     public function flush(): void {
