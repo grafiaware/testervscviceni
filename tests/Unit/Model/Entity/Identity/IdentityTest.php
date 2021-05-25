@@ -4,9 +4,8 @@ namespace Test\IdentityTest;
 use PHPUnit\Framework\TestCase;
 
 use Model\Entity\Identity\Identity;
+use Model\Entity\Identity\Key\Key;
 use Model\Entity\Identity\Exception\AttemptToSetGeneratedKeyException;
-use Model\Entity\Identity\Exception\MismatchedIndexesToKeyAttributeFieldsException;
-
 
 
 /**
@@ -14,96 +13,64 @@ use Model\Entity\Identity\Exception\MismatchedIndexesToKeyAttributeFieldsExcepti
  *
  * @author vlse2610
  */
-class IdentityTest extends TestCase  {
-     
-    private  $testovaciAttribute;
-    private  $testovaciKeyHash;
-        
+class IdentityTest extends TestCase  {        
     
-    public function setUp(): void {
-        $this->testovaciKeyHash   = [ 'Klic1' => 'aa', 'Klic2' => 'bb'  ];
-        $this->testovaciAttribute = [ 'Klic1' ,'Klic2'  ];
+    public function setUp(): void {       
     }
     
     
-    //-------------------------------------------------------------------------
-    public function testIsGenerated(  ) : void {
-       $isGenerated = true; 
-       $identity = new Identity( $this->testovaciAttribute, $isGenerated);        //na $attribute nezalezi
-       $this->assertTrue (  $identity->isGenerated() , '*CH* -  atribut objektu IsGeneratedKey ocekavan TRUE ' );
-       $identity = new Identity( $this->testovaciAttribute, false );        
-       $this->assertFalse (  $identity->isGenerated());                
-       $identity = new Identity( $this->testovaciAttribute );        
-       $this->assertFalse (  $identity->isGenerated() , '*CH* - atribut objektu IsGeneratedKey ocekavan FALSE ' );       
+    public function testHasGeneratedKey(  ) : void {
+        $testovaciHash   = [ 'Klic1' => 'aa', 'Klic2' => 'bb'  ];
+        $testovaciAttribute = [ 'Klic1' ,'Klic2'  ];   
+        $testovaciKey = new Key( $testovaciAttribute ); 
+        $testovaciKey->setHash($testovaciHash);
+
+        $hasGeneratedKey = true; 
+        $identity = new Identity( $testovaciKey, $hasGeneratedKey );        //na $attribute nezalezi       
+        $this->assertTrue ( $identity->hasGeneratedKey() , '*CH* -  atribut objektu hasGeneratedKey ocekavan TRUE ' );
+
+        $identity = new Identity( $testovaciKey, false );        //na $attribute nezalezi       
+        $this->assertFalse ( $identity->hasGeneratedKey() , '*CH* -  atribut objektu hasGeneratedKey ocekavan FALSE ' );
+
+        $identity = new Identity( $testovaciKey );        //na $attribute nezalezi       
+        $this->assertFalse ( $identity->hasGeneratedKey() , '*CH* -  atribut objektu hasGeneratedKey ocekavan FALSE ' );
     } 
+         
+    
+    public function testGetKey( ) : void  {
+        $testovaciHash   = [ 'Klic1' => 'aa', 'Klic2' => 'bb'  ];
+        $testovaciAttribute = [ 'Klic1' ,'Klic2'  ];   
+        $testovaciKey = new Key( $testovaciAttribute ); 
+        $testovaciKey->setHash($testovaciHash);
+        
+        $identity = new Identity( $testovaciKey );                                     
+        $key = $identity->getKey();           
+        $this->assertEquals( $testovaciKey, $key);
+    }    
     
     
-    public function testGetKeyAttribute() : void {
-        $identity = new Identity( $this->testovaciAttribute );  
-        $this->assertEquals( $this->testovaciAttribute , $identity->getKeyAttribute());
-        $identity = new Identity([]);  
-        $this->assertEquals( [] , $identity->getKeyAttribute());        
-    }
+    public function test_nullovy( ) : void  {                
+        $testovaciHash   = [   ];
+        $testovaciAttribute = [   ];        
+        $testovacikey = new Key( $testovaciAttribute );  
+        $testovacikey->setHash( $testovaciHash );
+
+        $identity = new Identity( $testovacikey );
+        $identity->setKey ( $testovacikey ) ;                     
+        $key = $identity->getKey();                  
+        $this->assertEquals( $testovacikey, $key);
+    }    
     
-    public function testSetKeyHash( ) : void  {
-       $identity = new Identity( $this->testovaciAttribute );            
-       $identity->setKeyHash( $this->testovaciKeyHash ) ;                     
-       $keyHash = $identity->getKeyHash();    
-       
-       $this->assertEquals($this->testovaciKeyHash,$keyHash);
-    }
-    
-    public function testSetKeyHash_AttemptToSetGeneratedKeyException( ) : void  {
-        $identity = new Identity( $this->testovaciAttribute, \TRUE );             
+                        
+    public function testSetKey_AttemptToSetGeneratedKeyException( ) : void  {
+        $testovaciHash   = [ 'Klic1' => 'aa', 'Klic2' => 'bb'  ];
+        $testovaciAttribute = [ 'Klic1' ,'Klic2'  ];   
+        $testovaciKey = new Key( $testovaciAttribute ); 
+        $testovaciKey->setHash($testovaciHash);
+        
+        $identity = new Identity( $testovaciKey, \TRUE );             
         $this->expectException( AttemptToSetGeneratedKeyException::class );  
-        $identity->setKeyHash( $this->testovaciKeyHash ) ;  //'*CH* pokus o nastaveni klice, ktery je generovany '
-    }
-    
-    public function testSetKeyHash_MismatchedIndexesToKeyAttributeFieldsException() : void  {
-        $identity = new Identity( [] );             
-        $this->expectException( MismatchedIndexesToKeyAttributeFieldsException::class ); // '*CH* neshodny attribute pri nastavovani klice'
-        $identity->setKeyHash( $this->testovaciKeyHash ) ;   // '*CH* neshodny atribut ->attribute objektu Identity pri nastavovani klice'        
+        $identity->setKey( $testovaciKey ) ;  //'*CH* pokus o nastaveni klice, ktery je generovany '
     }    
-
-    public function testGetKeyHash( ) : void  {
-       $identity = new Identity( $this->testovaciAttribute );            
-       $identity->setKeyHash( $this->testovaciKeyHash ) ;                     
-       $keyHash = $identity->getKeyHash();    
-       $this->assertEquals($this->testovaciKeyHash,$keyHash);
-    }    
-    
-    
-    public function testIsEqual(  ) : void  {
-        $identity1 = new Identity( $this->testovaciAttribute ); 
-        $identity1->setKeyHash($this->testovaciKeyHash);
-        $identity2 = new Identity( $this->testovaciAttribute );
-        $identity2->setKeyHash( $this->testovaciKeyHash );
-        $this->assertTrue( $identity1->isEqual($identity2), '*CH* keyHash ma byt equal, a neni ');
-        
-        $identity1 = new Identity( $this->testovaciAttribute ); 
-        $identity1->setKeyHash ($this->testovaciKeyHash);
-        $identity2 = new Identity(  [ 'Klic1' ] );
-        $identity2->setKeyHash( [ 'Klic1' => 'aa'  ] );
-        $this->assertFalse( $identity1->isEqual($identity2), '*CH* keyHash nema byt equal, a je ');
-        
-    }   
-
-       
-    public function testHasEqualAttribute(  ) : void {
-        $identity1 = new Identity( $this->testovaciAttribute ); 
-        $identity2 = new Identity( $this->testovaciAttribute );
-        $this->assertTrue( $identity1->hasEqualAttribute($identity2), '*CH* attribute ma byt equal, a neni ');
-        
-        $identity1 = new Identity( $this->testovaciAttribute ); 
-        $identity2 = new Identity( [] );
-        $this->assertFalse( $identity1->hasEqualAttribute($identity2), '*CH* attribute nema byt equal, a je ');
-        
-        $identity1 = new Identity( $this->testovaciAttribute ); 
-        $identity2 = new Identity(  [ 'Klic1' ] );
-        $this->assertFalse( $identity1->hasEqualAttribute($identity2), '*CH* attribute nema byt equal, a je ');
-        
-        $identity1 = new Identity( ['aaaa', 'bbbb'] ); 
-        $identity2 = new Identity(  [ 'bbbb', 'aaaa' ] );
-        $this->assertFalse( $identity1->hasEqualAttribute($identity2), '*CH* attribute nema byt equal, a je ');        
-    }    
+ 
 }

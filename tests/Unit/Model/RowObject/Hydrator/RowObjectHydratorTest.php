@@ -4,6 +4,8 @@ namespace Test\RowObjectHydratorTest;
 use PHPUnit\Framework\TestCase;
 
 use Model\RowObject\RowObjectInterface;
+use Model\RowObject\RowObjectAbstract;
+
 use Model\RowObject\Hydrator\RowObjectHydrator;
 
 use Model\RowObject\Hydrator\NameHydrator\AttributeNameHydratorInterface;
@@ -44,7 +46,7 @@ class AttributeNameHydratorROMock implements AttributeNameHydratorInterface {
  }
 
 
-class RowObjectMock implements RowObjectInterface {                  
+class RowObjectMock  extends RowObjectAbstract implements RowObjectInterface {                  
     public $titulPred;
     public $jmeno;
     public $prijmeni;

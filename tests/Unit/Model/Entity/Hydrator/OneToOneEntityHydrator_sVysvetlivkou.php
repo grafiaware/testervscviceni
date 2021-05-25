@@ -48,7 +48,7 @@ class IdentityMock_forOOHT implements IdentityInterface {
     public function getKeyHash() {
         return ['a'=>1];
     }        
-    public function setKeyHash( array $keyHash ) {
+    public function setKey( array $keyHash ) {
         return $this;
     }
     public function isEqual( IdentityInterface $identity ) : bool {

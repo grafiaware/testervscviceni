@@ -39,7 +39,7 @@ class OneToOneEntityHydratorPostaru  implements EntityHydratorInterface {
         
         $setMethodNameHydrator = new SetMethodNameHydrator();                       
         foreach ( $this->filter as  /* $key =>*/ $value ) { //=> jmeno vlastnosti row objektu
-            $methodName = $setMethodNameHydrator->hydrate( $value );
+            $methodName = $setMethodNameHydrator->hydrateEntity( $value );
             $entity->$methodName( $rowObject->$value );
         }
         

@@ -9,5 +9,6 @@ namespace Model\RowObject;
  * @author vlse2610
  */
 interface RowObjectInterface {
-    //put your code here
+    public function getKeyHash(): array;
+    public function setKeyHash(array $keyHash);
 }

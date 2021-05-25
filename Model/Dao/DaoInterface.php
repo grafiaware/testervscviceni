@@ -10,7 +10,7 @@ use Model\RowData\RowDataInterface;
 interface DaoInterface {
     
     public function get( $asocPoleKlic ): ?RowDataInterface ;
-    public function insert( RowDataInterface $rowData);
-    public function update( RowDataInterface $rowData);
-    public function delete( $asocPoleKlic ): void;
+    public function insert( RowDataInterface $rowData): void;
+    public function update( RowDataInterface $rowData): void;
+    public function delete( RowDataInterface $rowData ): void;
 }

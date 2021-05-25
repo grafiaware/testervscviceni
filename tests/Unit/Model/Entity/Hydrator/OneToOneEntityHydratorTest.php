@@ -7,11 +7,13 @@ use PHPUnit\Framework\TestCase;
 use Model\Entity\Hydrator\OneToOneEntityHydrator;
 
 use Model\Entity\Identity\IdentityInterface;
+use Model\Entity\Identity\Key\KeyInterface;
 use Model\Entity\Hydrator\Filter\OneToOneFilterInterface;
 use Model\Entity\Hydrator\NameHydrator\MethodNameHydratorInterface;
 use Model\Entity\EntityInterface;
 use Model\Entity\EntityAbstract;
 use Model\RowObject\RowObjectInterface;
+use Model\RowObject\RowObjectAbstract;
 
 class OneToOneFilterMock implements OneToOneFilterInterface {    
     /**
@@ -37,26 +39,18 @@ class MethodNameHydrator_Mock implements MethodNameHydratorInterface {
 }
 
 
-
+    
 class IdentityMock implements IdentityInterface {
-    public function isGenerated() : bool {
+    public function hasGeneratedKey() : bool {
         return false;
     }
-    public function getKeyAttribute() {
-        return ['a'];
+    public function getKey(): KeyInterface{ 
+        return $this->key;
+    }    
+    public function setKey( KeyInterface $key): void {
+        $this->key = $key;
     }
-    public function getKeyHash() {
-        return ['a'=>1];
-    }        
-    public function setKeyHash( array $keyHash ) {
-        return $this;
-    }
-    public function isEqual( IdentityInterface $identity ) : bool {
-        return false;
-    }
-    public function hasEqualAttribute( IdentityInterface $identity ) : bool {
-        return true;
-    }
+ 
 }
 
 interface EntityInterfaceMock extends EntityInterface {
@@ -170,7 +164,7 @@ class TestovaciEntityMock  extends EntityAbstract implements EntityInterfaceMock
     }
 }
     
-class RowObjectMock implements RowObjectInterface {              
+class RowObjectMock extends RowObjectAbstract implements RowObjectInterface {              
     public $uidPrimarniKlicZnaky ;         
 
     public $titulPred;
@@ -294,7 +288,7 @@ class OneToOneEntityHydratorTest extends TestCase {
      */     
     public function testOneToOneEntityExtract(): void {             
         // 2 - zdrojovy datovy objekt testovaci
-        $testovaciZdrojovaEntityNaplnena = new TestovaciEntityMock ( new IdentityMock(  ['a'] ) );              
+        $testovaciZdrojovaEntityNaplnena = new TestovaciEntityMock ( new IdentityMock(  ) );              
         $testovaciZdrojovaEntityNaplnena->setCeleJmeno(      "BARNABÁŠ " . "KOSTKA" );        
         $testovaciZdrojovaEntityNaplnena->setPrvekChar(      "CHARY *testovaci*" );
         $testovaciZdrojovaEntityNaplnena->setPrvekVarchar(   "VARCHARY -testovaci-" );

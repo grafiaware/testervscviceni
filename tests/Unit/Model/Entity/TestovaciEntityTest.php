@@ -5,66 +5,25 @@ namespace Test\TestovaciEntityTest;
 use PHPUnit\Framework\TestCase;
 
 use Model\Entity\Identity\IdentityInterface;
+use Model\Entity\Identity\Key\KeyInterface;
 use Model\Entity\EntityInterface;
 use Model\Entity\EntityAbstract;
 
 
-
+    
 class IdentityMock implements IdentityInterface {
-    /**
-     *
-     * @var bool Klíč je generovaný.
-     */
-    private $isGeneratedKey;       
-    /**
-     * Pole, které jako hodnoty má názvy(jména) polí částí klíče v asoc. poli keyHash.
-     * @param array $attribute
-     */
-    private $attribute;    
-    /**
-     * Klíč - asoc.pole dvojic (KeyValue pair) jmeno(casti klice)->hodnota(casti klice).
-     * @var array 
-     */
-    private $keyHash;
-    
-    
-      
-    public function __construct ( array $attribute, $isGeneratedKey=FALSE ) /*: IdentityInterface*/ {
-        $this->isGeneratedKey = (bool) $isGeneratedKey;
-        $this->attribute = $attribute;
-//        $this->id = spl_object_hash($this);
-//        $this->idMD5 = md5($this->id);
-    }    
-    public function isGenerated() : bool {
-        return $this->isGeneratedKey;
-    }       
-    public function getKeyAttribute() {
-        return $this->attribute;
+    public function hasGeneratedKey() : bool {
+        return false;
     }
-    public function getKeyHash() {
-        return $this->keyHash;
-    }  
-    public function setKeyHash( array $keyHash ) {
-        if ($this->isGeneratedKey) {
-            throw new  AttemptToSetGeneratedKeyException('Klíč je generovaný a hodnoty generovaného klíče lze nastavit pouze hydrátorem při čtení z databáze.');           
-            //throw new \LogicException('Klíč je generovaný a hodnoty generovaného klíče lze nastavit pouze hydrátorem při čtení z databáze.');
-        }
-        if($this->attribute != array_keys($keyHash)) {
-            throw new MismatchedIndexesToKeyAttributeFieldsException('Jména částí klíče ($keyHash) neodpovídají polím atributu klíče zadaným v konstruktoru.');
-        }
-        $this->keyHash = $keyHash;
-        return $this;
+    public function getKey(): KeyInterface{ 
+        return $this->key;
     }    
-    public function isEqual( IdentityInterface $identity ) : bool {
-        //$a == $b 	Equality 	TRUE if $a and $b have the same key/value pairs. - nezáleží na pořadí - testováno
-        //$a === $b 	Identity 	TRUE if $a and $b have the same key/value pairs in the same order and of the same types.)
-        return $this->keyHash == $identity->getKeyHash();
-    }        
-    public function hasEqualAttribute( IdentityInterface $identity ) : bool {
-        return $this->attribute == $identity->getKeyAttribute();
+    public function setKey( KeyInterface $key): void {
+        $this->key = $key;
     }
-
+ 
 }
+
 
 interface TestovaciEntityInterfaceMock extends EntityInterface {    
 
@@ -222,7 +181,7 @@ class TestovaciEntityTest extends TestCase {
     public function setUp(): void {
         $this->testovaciKeyHash   = [ 'Klic1' => 'aa', 'Klic2' => 'bb'  ];
         $this->testovaciAttribute = [ 'Klic1' ,'Klic2'  ];               
-        $this->identity = new IdentityMock ( $this->testovaciAttribute); //neni generovany klic    
+        $this->identity = new IdentityMock ( ); //neni generovany klic    
     }
     
     

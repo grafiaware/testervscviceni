@@ -17,5 +17,21 @@ interface EntityInterface {
      */
     public function getIdentity(): IdentityInterface;
     
+    /**
+     * 
+     * @return void
+     */
+    public function setPersisted(): void;
 
+    /**
+     * 
+     * @return void
+     */
+    public function setUnpersisted(): void;
+    
+    /**
+     * 
+     * @return bool
+     */
+    public function isPersisted(): bool;
 }

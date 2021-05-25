@@ -14,7 +14,7 @@ use Pes\Database\Metadata\TableMetadataInterface;
  *
  * @author vlse2610
  */
-abstract class DaoAbstract /*implements DaoInterface*/ {
+abstract class DaoAbstract implements DaoInterface{
 
     /**
      * @var HandlerInterface

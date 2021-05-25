@@ -43,7 +43,7 @@ class KeyHydrator implements KeyHydratorInterface {
     public function hydrate(RelationKeyInterface $key, \ArrayAccess $data) {
         $keyHash = array();
         foreach ($key->getKeyAttribute() as $attributeField) {
-            $fkAttributeField = $this->nameHydrator->hydrate($attributeField);
+            $fkAttributeField = $this->nameHydrator->hydrateEntity($attributeField);
             if (!isset($fkAttributeField)) {
                 throw new \UnexpectedValueException('Zadaný name hydrator negeneruje jméno sloupce pro atribut klíče '.$attributeField.'.');
             }

@@ -104,7 +104,7 @@ class OneToOneEntityHydratorTestPostaru extends TestCase {
         // 5 - kontrola hydratace    
         $getMethodNameHydrator = new GetMethodNameHydrator();
         foreach (  $this->seznamJmen as  $value)  /* $value  je vlastnost rowobjectu!!!!!*/    { 
-            $getMethodName = $getMethodNameHydrator->hydrate($value);  //metoda entity
+            $getMethodName = $getMethodNameHydrator->hydrateEntity($value);  //metoda entity
             // assertEquals (ocekavana, aktualni hodnota v entite)              
             $this->assertEquals( $this->testovaciZdrojovyRowObject->$value , $novaPlnenaTestovaciEntity->$getMethodName()  , "*CHYBA*");
          
@@ -134,7 +134,7 @@ class OneToOneEntityHydratorTestPostaru extends TestCase {
         // 5 - kontrola extrakce     
         $getMethodNameHydrator = new GetMethodNameHydrator();
         foreach (  $this->seznamJmen as  $value )  /* $value je vlastnost rowobjectu!!!!!*/ {
-             $getMethodName = $getMethodNameHydrator->hydrate($value);  //metoda entity
+             $getMethodName = $getMethodNameHydrator->hydrateEntity($value);  //metoda entity
             // assertEquals (ocekavana, aktualni hodnota v row objektu)                            
             $this->assertEquals( $this->testovaciZdrojovaEntity->$getMethodName() , $novyPlnenyRowObject->$value , "*CHYBA*");     
         }    
@@ -180,7 +180,7 @@ class Identity implements IdentityInterface {
     public function getKeyHash() {
         return $this->keyHash;
     }     
-    public function setKeyHash( array $keyHash ) {        
+    public function setKey( array $keyHash ) {        
         return $this;
     }
     public function isEqual( IdentityInterface $identity ) : bool {
